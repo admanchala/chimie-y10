@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redox & réactivité des métaux — Sciences Année 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="page-hero"><div class="ph-bar"></div></header>
+<nav class="nav" aria-label="Navigation du site"><div class="nav-inner">
+<a class="tab-btn" href="index.html">🏠 Accueil</a>
+<a class="tab-btn" href="kinetics.html" style="--tab-color:var(--kin)">1 · Cinétique</a>
+<a class="tab-btn" href="redox.html" style="--tab-color:var(--redox)" aria-current="page">2 · Redox</a>
+<a class="tab-btn" href="acids.html" style="--tab-color:var(--acid)">3 · Acides &amp; bases</a>
+<a class="tab-btn" href="revision.html" style="--tab-color:var(--green)">🎯 Révision</a>
+</div></nav>
+<main class="wrap">
+<section class="panel" id="panel-redox" style="--accent:var(--redox);--accent-soft:var(--redox-soft);--accent-deep:var(--redox-deep)">
+  <div class="section-head">
+    <span class="section-tag" style="background:var(--redox)">Section 2</span>
+    <h2>Redox &amp; réactivité des métaux</h2>
+  </div>
+  <p class="section-intro">Des électrons qui changent de main : de la série d'activité jusqu'aux piles voltaïques, tout est une question de transfert d'électrons.</p>
+<div class="card obj-card" data-chapter="redox"><span class="deftag" style="background:var(--redox);color:#fff">Objectifs d'apprentissage</span><h4>🎯 À la fin de cette section, tu devrais être capable de…</h4><p class="note">Coche au fur et à mesure — ta progression est enregistrée sur cet appareil.</p><ul class="obj-list"><li><label><input type="checkbox"> <span>Définir l'oxydation et la réduction en termes de transfert d'électrons (OIL RIG)</span></label></li><li><label><input type="checkbox"> <span>Utiliser la série d'activité pour prédire les réactions de déplacement</span></label></li><li><label><input type="checkbox"> <span>Écrire des demi-équations équilibrées en masse et en charge</span></label></li><li><label><input type="checkbox"> <span>Relier la réactivité d'un métal à sa méthode d'extraction</span></label></li><li><label><input type="checkbox"> <span>Calculer la chaleur dégagée par une réaction avec q = mCΔT</span></label></li><li><label><input type="checkbox"> <span>Décrire une pile voltaïque (anode, cathode, pont salin) et interpréter sa tension</span></label></li></ul><div class="obj-progress"></div></div>
+
+
+  <h3 class="block-title"><span class="num" style="background:var(--redox)">2.1</span>Oxydation et réduction</h3>
+  <div class="grid-2">
+    <div class="card definition">
+      <span class="deftag" style="background:var(--redox);color:#fff">Définition clé</span>
+      <p><strong>Oxydation :</strong> perte d'électrons (l'espèce est oxydée).</p>
+    </div>
+    <div class="card definition">
+      <span class="deftag" style="background:var(--redox);color:#fff">Définition clé</span>
+      <p><strong>Réduction :</strong> gain d'électrons (l'espèce est réduite).</p>
+    </div>
+  </div>
+  <div class="mnemonic">
+    <span class="big">OIL&nbsp;RIG</span>
+    <span><strong>O</strong>xidation <strong>I</strong>s <strong>L</strong>oss (of electrons) · <strong>R</strong>eduction <strong>I</strong>s <strong>G</strong>ain (of electrons).<br><span style="color:#9DB3AA;font-size:15px">Dans toute réaction redox, oxydation et réduction se produisent <strong>simultanément</strong> : les électrons perdus par un réactif sont gagnés par l'autre.</span></span>
+  </div>
+
+  <h3 class="block-title"><span class="num" style="background:var(--redox)">2.2</span>Série d'activité des métaux</h3>
+  <div class="card">
+    <div class="eq">Plus réactif → &nbsp;K &gt; Na &gt; Ca &gt; Mg &gt; Al &gt; Zn &gt; Fe &gt; Pb &gt; (H) &gt; Cu &gt; Ag &gt; Au&nbsp; ← Moins réactif</div>
+    <h4>Liens avec le tableau périodique</h4>
+    <p>Les métaux du <strong>Groupe 1</strong> (Li, Na, K) sont très réactifs car ils perdent facilement leur unique électron de valence. Les métaux du <strong>Groupe 2</strong> (Mg, Ca) sont moins réactifs que le Groupe 1 mais plus réactifs que la plupart des métaux de transition. En descendant dans un groupe, la réactivité <strong>augmente</strong> : l'électron de valence est plus éloigné du noyau, donc plus facile à perdre.</p>
+    <h4>Réactions caractéristiques</h4>
+    <table>
+      <tr><th>Métal</th><th>Avec l'eau</th><th>Avec les acides</th></tr>
+      <tr><td><code class="chem">K, Na</code></td><td>Réaction violente, H₂ dégagé</td><td>Réaction explosive</td></tr>
+      <tr><td><code class="chem">Ca, Mg</code></td><td>Réaction lente/modérée avec l'eau froide</td><td>Réaction rapide</td></tr>
+      <tr><td><code class="chem">Zn, Fe</code></td><td>Pas de réaction avec l'eau froide</td><td>Réaction modérée</td></tr>
+      <tr><td><code class="chem">Cu, Ag</code></td><td>Aucune réaction</td><td>Aucune réaction (HCl/H₂SO₄ dilués)</td></tr>
+    </table>
+  </div>
+
+  <!-- Voltaic cell builder -->
+  <div class="widget">
+    <h4>🔋 Constructeur de pile &amp; prédicteur de déplacement</h4>
+    <p class="hint">Choisis <strong>deux métaux</strong> dans la série d'activité : découvre qui déplace qui, l'anode, la cathode, les demi-équations et la tension approximative de la pile.</p>
+    <div class="metal-row" id="metalRow" role="group" aria-label="Choix de deux métaux"></div>
+    <div class="cell-result" id="cellResult"><em style="color:#9DB3AA">Sélectionne deux métaux pour construire une pile…</em></div>
+  </div>
+
+  <h3 class="block-title"><span class="num" style="background:var(--redox)">2.3</span>Réactions de déplacement &amp; demi-équations</h3>
+  <div class="card">
+    <p>Un métal plus réactif peut <strong>déplacer</strong> un métal moins réactif de sa solution saline. <strong>Règle :</strong> si le métal A est plus réactif que le métal B, alors A peut déplacer B de la solution de sel de B.</p>
+    <h4>Exemple : zinc + sulfate de cuivre(II)</h4>
+    <div class="eq">Zn(s) + CuSO₄(aq) → ZnSO₄(aq) + Cu(s)</div>
+    <p>Oxydation (Zn perd des électrons) : </p>
+    <div class="eq">Zn(s) → Zn²⁺(aq) + 2e⁻</div>
+    <p>Réduction (Cu²⁺ gagne des électrons) :</p>
+    <div class="eq">Cu²⁺(aq) + 2e⁻ → Cu(s)</div>
+    <h4>Méthode pour écrire une demi-équation</h4>
+    <p>1. Écrivez la formule du métal ou de l'ion des deux côtés. &nbsp;2. Équilibrez les charges en ajoutant des électrons (e⁻) du bon côté. &nbsp;3. Vérifiez que la masse <strong>ET</strong> la charge sont équilibrées.</p>
+  </div>
+
+  <h3 class="block-title"><span class="num" style="background:var(--redox)">2.4</span>Extraction des métaux</h3>
+  <div class="card">
+    <table>
+      <tr><th>Réactivité</th><th>Méthode d'extraction</th></tr>
+      <tr><td>Très réactif (K, Na, Mg, Al)</td><td>Électrolyse (nécessite beaucoup d'énergie)</td></tr>
+      <tr><td>Réactivité moyenne (Zn, Fe)</td><td>Réduction par le carbone (coke) dans un haut-fourneau</td></tr>
+      <tr><td>Peu réactif (Cu, Pb)</td><td>Réduction par le carbone ou chauffage simple</td></tr>
+      <tr><td>Très peu réactif (Ag, Au, Pt)</td><td>Trouvés à l'état natif (métal pur dans la nature)</td></tr>
+    </table>
+  </div>
+
+  <h3 class="block-title"><span class="num" style="background:var(--redox)">2.5</span>Chaleur de réaction &amp; calorimétrie</h3>
+  <div class="card">
+    <p>Certaines réactions de déplacement sont <strong>exothermiques</strong>. La chaleur dégagée se calcule avec :</p>
+    <div class="eq">q = m × C × ΔT</div>
+    <p><strong>q</strong> = quantité de chaleur (J) · <strong>m</strong> = masse de la solution (g) · <strong>C</strong> = capacité calorifique spécifique de l'eau = <strong>4,18 J·g⁻¹·°C⁻¹</strong> · <strong>ΔT</strong> = T<sub>finale</sub> − T<sub>initiale</sub> (°C)</p>
+    <p class="note">Interprétation : plus la différence de réactivité entre deux métaux est grande, plus la réaction est exothermique, donc plus ΔT est élevé.</p>
+  </div>
+
+  <!-- Calorimetry calculator -->
+  <div class="widget">
+    <h4>🌡 Calculatrice q = mCΔT</h4>
+    <p class="hint">Saisis la masse et les températures — calcule q, et l'enthalpie molaire si tu connais le nombre de moles. Utilise-la pour vérifier tes réponses d'entraînement !</p>
+    <div class="calc-grid">
+      <div><label for="calcM">Masse m (g)</label><input type="number" id="calcM" value="100" step="any"></div>
+      <div><label for="calcTi">T initiale (°C)</label><input type="number" id="calcTi" value="20.0" step="any"></div>
+      <div><label for="calcTf">T finale (°C)</label><input type="number" id="calcTf" value="26.7" step="any"></div>
+      <div><label for="calcN">Moles n (optionnel)</label><input type="number" id="calcN" placeholder="ex. 0.05" step="any"></div>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="lab">ΔT</div><div class="val" id="calcDT">6,7 °C</div></div>
+      <div class="stat"><div class="lab">q dégagée</div><div class="val" id="calcQ">2,80 kJ</div></div>
+      <div class="stat"><div class="lab">ΔH molaire</div><div class="val" id="calcH">—</div></div>
+    </div>
+  </div>
+
+  <h3 class="block-title"><span class="num" style="background:var(--redox)">2.6</span>Piles voltaïques</h3>
+  <div class="card">
+    <p>Une <strong>pile voltaïque</strong> (ou pile galvanique) convertit l'énergie chimique d'une réaction redox spontanée en énergie électrique.</p>
+    <table>
+      <tr><th>Composant</th><th>Rôle</th></tr>
+      <tr><td><strong>Anode (−)</strong></td><td>Le métal le plus réactif — il s'<strong>oxyde</strong> (perd des électrons)</td></tr>
+      <tr><td><strong>Cathode (+)</strong></td><td>Le métal moins réactif — il se <strong>réduit</strong> (gagne des électrons)</td></tr>
+      <tr><td><strong>Pont salin</strong></td><td>Permet le passage des ions pour équilibrer les charges</td></tr>
+      <tr><td><strong>Circuit externe</strong></td><td>Les électrons circulent de l'anode vers la cathode</td></tr>
+    </table>
+    <h4>Exemple — pile Daniell (Zn/Cu)</h4>
+    <p>Anode : <code class="chem">Zn → Zn²⁺ + 2e⁻</code> (oxydation) · Cathode : <code class="chem">Cu²⁺ + 2e⁻ → Cu</code> (réduction) · Tension ≈ <strong>1,1 V</strong></p>
+    <p class="note">Déduire la réactivité à partir de la tension : une tension plus élevée indique une différence de réactivité plus grande entre les deux métaux. En comparant les tensions de différentes piles, on peut établir l'ordre de réactivité relatif des métaux.</p>
+  </div>
+
+  <h3 class="block-title"><span class="num" style="background:var(--redox)">2.7</span>Liaisons métalliques et ioniques</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Liaison métallique</h4>
+      <p>Dans un métal, les atomes perdent leurs électrons de valence pour former des <strong>ions positifs</strong> (cations) entourés d'un « nuage » d'<strong>électrons délocalisés</strong>. C'est cette structure qui explique la conductivité électrique et thermique des métaux.</p>
+    </div>
+    <div class="card">
+      <h4>Liaison ionique</h4>
+      <p>Un métal cède des électrons à un non-métal pour former des <strong>ions</strong> de charges opposées, qui s'attirent mutuellement.</p>
+      <p><code class="chem">Na → Na⁺ + e⁻</code> puis <code class="chem">Cl + e⁻ → Cl⁻</code> <span class="arrow">→</span> <code class="chem">NaCl</code> (sel de table)</p>
+    </div>
+  </div>
+
+  
+<h3 class="block-title"><span class="num" style="background:var(--redox)">⬡</span>Schéma : la pile Daniell (Zn/Cu)</h3>
+<figure class="fig"><svg viewBox="0 0 680 330" role="img" aria-label="Schema d'une pile Daniell zinc cuivre avec pont salin">
+<!-- wires + voltmeter -->
+<path d="M 150 110 L 150 45 L 312 45" fill="none" stroke="#54656F" stroke-width="3"/>
+<path d="M 368 45 L 530 45 L 530 110" fill="none" stroke="#54656F" stroke-width="3"/>
+<circle cx="340" cy="45" r="26" fill="#fff" stroke="#54656F" stroke-width="3"/>
+<text x="340" y="52" text-anchor="middle" font-size="19" font-weight="700" fill="#15232B">V</text>
+<text x="231" y="32" text-anchor="middle" font-size="14" fill="#0B7285" font-weight="700">e⁻ ⟶</text>
+<text x="449" y="32" text-anchor="middle" font-size="14" fill="#0B7285" font-weight="700">e⁻ ⟶</text>
+<!-- beakers -->
+<path d="M 60 140 L 60 300 L 260 300 L 260 140" fill="none" stroke="#54656F" stroke-width="3"/>
+<rect x="63" y="170" width="194" height="127" fill="#E8F4F8" opacity="0.9"/>
+<path d="M 420 140 L 420 300 L 620 300 L 620 140" fill="none" stroke="#54656F" stroke-width="3"/>
+<rect x="423" y="170" width="194" height="127" fill="#BBDDF2"/>
+<!-- electrodes -->
+<rect x="135" y="110" width="30" height="160" fill="#A9B4BC" stroke="#54656F" stroke-width="2"/>
+<rect x="515" y="110" width="30" height="160" fill="#C2762B" stroke="#8A5217" stroke-width="2"/>
+<!-- salt bridge -->
+<path d="M 215 200 L 215 95 Q 215 80 230 80 L 450 80 Q 465 80 465 95 L 465 200" fill="none" stroke="#7E8F87" stroke-width="16" stroke-linecap="round" opacity=".85"/>
+<text x="340" y="73" text-anchor="middle" font-size="13.5" fill="#15232B" font-weight="700">Pont salin (KNO₃)</text>
+<!-- labels -->
+<text x="150" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#15232B">Zn — anode (−)</text>
+<text x="530" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#15232B">Cu — cathode (+)</text>
+<text x="110" y="320" font-size="13" fill="#54656F">ZnSO₄(aq)</text>
+<text x="475" y="320" font-size="13" fill="#54656F">CuSO₄(aq)</text>
+<text x="105" y="195" font-size="12.5" fill="#0B7285">Zn → Zn²⁺ + 2e⁻</text>
+<text x="455" y="248" font-size="12.5" fill="#0B7285">Cu²⁺ + 2e⁻ → Cu</text>
+<text x="340" y="118" text-anchor="middle" font-size="13" fill="#54656F">tension ≈ 1,1 V</text>
+</svg><figcaption>L'anode (Zn, le plus réactif) s'oxyde et libère des électrons qui traversent le circuit externe vers la cathode (Cu). Le pont salin laisse circuler les ions pour maintenir la neutralité électrique.</figcaption></figure>
+<h3 class="block-title"><span class="num" style="background:var(--redox)">2.8</span>Exemples résolus</h3>
+  <details class="ex">
+    <summary><span class="pill" style="background:var(--redox)">Exemple 1</span>Réaction de déplacement — fer dans CuSO₄<span class="chev">▾</span></summary>
+    <div class="ex-body">
+      <p><strong>Question :</strong> le fer est plongé dans une solution de sulfate de cuivre(II). Écrivez l'équation globale et les deux demi-équations. Identifiez l'espèce oxydée et l'espèce réduite.</p>
+      <div class="answer show"><span class="alab">Réponse</span>
+        Le fer est plus réactif que le cuivre → déplacement possible.
+        <div class="eq">Fe(s) + CuSO₄(aq) → FeSO₄(aq) + Cu(s)</div>
+        <div class="eq">Fe(s) → Fe²⁺(aq) + 2e⁻ &nbsp;(oxydation)</div>
+        <div class="eq">Cu²⁺(aq) + 2e⁻ → Cu(s) &nbsp;(réduction)</div>
+        Le fer est <strong>oxydé</strong> ; l'ion cuivre est <strong>réduit</strong>.
+      </div>
+    </div>
+  </details>
+  <details class="ex">
+    <summary><span class="pill" style="background:var(--redox)">Exemple 2</span>Calcul calorimétrique — zinc + CuSO₄<span class="chev">▾</span></summary>
+    <div class="ex-body">
+      <p><strong>Question :</strong> 50 cm³ de solution de sulfate de cuivre(II) à 0,5 mol/L est placé dans un calorimètre. On ajoute un excès de poudre de zinc. La température passe de 21,0 °C à 28,4 °C. Calculez la chaleur dégagée. (Densité ≈ 1 g/cm³)</p>
+      <div class="answer show"><span class="alab">Réponse</span>
+        m = 50 g · ΔT = 28,4 − 21,0 = 7,4 °C · C = 4,18 J·g⁻¹·°C⁻¹
+        <div class="eq">q = mCΔT = 50 × 4,18 × 7,4 = <strong>1 546,6 J ≈ 1,55 kJ</strong></div>
+        La réaction est exothermique (ΔT positif).
+      </div>
+    </div>
+  </details>
+  <details class="ex">
+    <summary><span class="pill" style="background:var(--redox)">Exemple 3</span>Pile voltaïque Mg/Cu vs Zn/Cu<span class="chev">▾</span></summary>
+    <div class="ex-body">
+      <p><strong>Question :</strong> une pile est construite avec du magnésium et du cuivre. Identifiez l'anode et la cathode, écrivez les demi-équations et prédisez si la tension sera plus ou moins élevée qu'une pile Zn/Cu.</p>
+      <div class="answer show"><span class="alab">Réponse</span>
+        Mg est plus réactif que Cu → Mg est l'<strong>anode</strong> (s'oxyde) ; Cu est la <strong>cathode</strong> (se réduit).
+        <div class="eq">Mg(s) → Mg²⁺(aq) + 2e⁻</div>
+        <div class="eq">Cu²⁺(aq) + 2e⁻ → Cu(s)</div>
+        La différence de réactivité entre Mg et Cu est <strong>plus grande</strong> qu'entre Zn et Cu → la tension sera <strong>plus élevée</strong> que celle de la pile Zn/Cu (≈ 2,7 V vs 1,1 V). <span class="note">Vérifie avec le constructeur de pile ci-dessus !</span>
+      </div>
+    </div>
+  </details>
+  <p class="note" style="margin-top:14px">➜ Les 10 questions d'entraînement de cette section se trouvent sur la page <a href="revision.html" style="color:var(--accent-deep)"><strong>Révision</strong></a>.</p>
+<h3 class="block-title"><span class="num" style="background:var(--redox)">⚡</span>Quiz éclair — score automatique</h3><p class="note" style="margin-bottom:16px">Réponse immédiate. Obtiens 5/6 ou plus pour décrocher le badge 🥇 — ton meilleur score est enregistré sur cet appareil et compte dans ta progression (page Révision).</p><div id="quiz"></div>
+<script>
+const QUIZ_DATA=[
+{q:"L'oxydation est…",o:["un gain d'électrons","une perte d'électrons","un gain de protons","une perte de neutrons"],c:1},
+{q:"Quel est le métal le plus réactif parmi : Cu, Zn, Mg, Fe ?",o:["Cu","Zn","Mg","Fe"],c:2},
+{q:"Dans une pile voltaïque, l'anode est…",o:["le métal le moins réactif (borne +)","le métal le plus réactif, qui s'oxyde (borne −)","toujours en cuivre","l'électrode où les électrons arrivent"],c:1},
+{q:"Le rôle du pont salin est de…",o:["conduire les électrons","permettre le passage des ions et maintenir la neutralité électrique","chauffer la solution","séparer physiquement les deux métaux"],c:1},
+{q:"L'aluminium est extrait de son minerai par…",o:["réduction au carbone (coke)","chauffage simple","électrolyse","filtration"],c:2},
+{q:"q = mCΔT avec m = 100 g et ΔT = 5,0 °C donne…",o:["209 J","2 090 J","20 900 J","890 J"],c:1}];
+document.addEventListener('DOMContentLoaded',()=>renderQuiz(document.getElementById('quiz'),'redox',QUIZ_DATA));
+</script>
+</section>
+</main>
+<footer class="footer"><div class="ph-mini"></div><p>Sciences Année 10 · Cinétique chimique — Redox — Acides et bases · <a href="index.html" style="color:var(--ink-soft)">Accueil</a> · <a href="revision.html" style="color:var(--ink-soft)">Révision &amp; scores</a></p></footer>
+<script>
+/* == VOLTAIC CELL BUILDER ===================== */
+(function(){
+  const METALS=[
+    {s:'K', ion:'K⁺',  e:1, E:-2.93, name:'potassium'},
+    {s:'Na',ion:'Na⁺', e:1, E:-2.71, name:'sodium'},
+    {s:'Ca',ion:'Ca²⁺',e:2, E:-2.87, name:'calcium'},
+    {s:'Mg',ion:'Mg²⁺',e:2, E:-2.37, name:'magnésium'},
+    {s:'Al',ion:'Al³⁺',e:3, E:-1.66, name:'aluminium'},
+    {s:'Zn',ion:'Zn²⁺',e:2, E:-0.76, name:'zinc'},
+    {s:'Fe',ion:'Fe²⁺',e:2, E:-0.44, name:'fer'},
+    {s:'Pb',ion:'Pb²⁺',e:2, E:-0.13, name:'plomb'},
+    {s:'Cu',ion:'Cu²⁺',e:2, E: 0.34, name:'cuivre'},
+    {s:'Ag',ion:'Ag⁺', e:1, E: 0.80, name:'argent'}
+  ];
+  const row=document.getElementById('metalRow'),res=document.getElementById('cellResult');
+  let sel=[];
+  METALS.forEach((mt,i)=>{
+    const b=document.createElement('button');b.className='metal';b.textContent=mt.s;b.title=mt.name;
+    b.addEventListener('click',()=>{
+      if(sel.includes(i)){sel=sel.filter(x=>x!==i);}
+      else{if(sel.length===2)sel.shift();sel.push(i);}
+      render();
+    });
+    row.appendChild(b);
+  });
+  function half(mt,ox){
+    // balance electrons: M -> M^n+ + n e-  /  M^n+ + n e- -> M
+    const n=mt.e===1?'':mt.e===2?'2':'3';
+    return ox?`${mt.s} → ${mt.ion} + ${n||''}${n?' ':''}e⁻`.replace('+ e⁻','+ e⁻')
+             :`${mt.ion} + ${n||''}${n?' ':''}e⁻ → ${mt.s}`;
+  }
+  function render(){
+    [...row.children].forEach((b,i)=>{
+      b.classList.toggle('sel',sel.includes(i));
+      b.classList.toggle('second',sel.indexOf(i)===1);
+    });
+    if(sel.length<2){res.innerHTML='<em style="color:#9DB3AA">Sélectionne deux métaux pour construire une pile…</em>';return;}
+    let [a,b]=sel.map(i=>METALS[i]);
+    if(a.E>b.E)[a,b]=[b,a]; // a = more reactive (anode)
+    const V=(b.E-a.E).toFixed(2).replace('.',',');
+    res.innerHTML=`
+      <p style="margin-bottom:10px"><strong style="color:#F9A03F">${a.s}</strong> est plus réactif que <strong style="color:#5AB7D4">${b.s}</strong> → ${a.s} déplace ${b.s} de sa solution saline, et dans une pile :</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div><span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:#F9A03F">ANODE (−) · OXYDATION</span><div class="eq">${half(a,true)}</div></div>
+        <div><span style="font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:#5AB7D4">CATHODE (+) · RÉDUCTION</span><div class="eq">${half(b,false)}</div></div>
+      </div>
+      <p style="margin-top:10px">Les électrons circulent de <strong>${a.s}</strong> (anode) vers <strong>${b.s}</strong> (cathode) dans le circuit externe. Tension approximative : <span class="volt">≈ ${V} V</span></p>
+      <p class="note" style="color:#9DB3AA">Plus les deux métaux sont éloignés dans la série d'activité, plus la tension est élevée.</p>`;
+  }
+})();
+
+
+/* == CALORIMETRY CALC ===================== */
+(function(){
+  const M=document.getElementById('calcM'),Ti=document.getElementById('calcTi'),Tf=document.getElementById('calcTf'),N=document.getElementById('calcN');
+  function fr(x,d=2){return x.toLocaleString('fr-CH',{minimumFractionDigits:0,maximumFractionDigits:d}).replace(/\s/g,' ');}
+  function upd(){
+    const m=parseFloat(M.value),ti=parseFloat(Ti.value),tf=parseFloat(Tf.value),n=parseFloat(N.value);
+    if(isNaN(m)||isNaN(ti)||isNaN(tf)){return;}
+    const dT=tf-ti,q=m*4.18*dT;
+    document.getElementById('calcDT').textContent=fr(dT,1)+' °C';
+    document.getElementById('calcQ').textContent=Math.abs(q)>=1000?fr(q/1000,2)+' kJ':fr(q,1)+' J';
+    document.getElementById('calcH').textContent=(!isNaN(n)&&n>0)?fr(-q/1000/n,1)+' kJ/mol':'—';
+  }
+  [M,Ti,Tf,N].forEach(el=>el.addEventListener('input',upd));upd();
+})();
+
+
+</script>
+<script src="app.js"></script>
+</body>
+</html>

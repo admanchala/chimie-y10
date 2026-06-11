@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Révision & scores — Sciences Année 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="page-hero"><div class="ph-bar"></div></header>
+<nav class="nav" aria-label="Navigation du site"><div class="nav-inner">
+<a class="tab-btn" href="index.html">🏠 Accueil</a>
+<a class="tab-btn" href="kinetics.html" style="--tab-color:var(--kin)">1 · Cinétique</a>
+<a class="tab-btn" href="redox.html" style="--tab-color:var(--redox)">2 · Redox</a>
+<a class="tab-btn" href="acids.html" style="--tab-color:var(--acid)">3 · Acides &amp; bases</a>
+<a class="tab-btn" href="revision.html" style="--tab-color:var(--green)" aria-current="page">🎯 Révision</a>
+</div></nav>
+<main class="wrap">
+<section class="panel"><div class="section-head"><span class="section-tag" style="background:var(--green)">Ta progression</span><h2>Tableau de bord</h2></div><p class="section-intro">Chaque chapitre combine trois éléments : les objectifs cochés, ton meilleur score au quiz éclair, et les questions d'entraînement maîtrisées. Décroche le badge 🥇 à 80 % !</p><div class="dash-grid" id="dash"></div></section>
+<section class="panel" id="panel-flash">
+  <div class="section-head">
+    <span class="section-tag" style="background:#F9A03F">Mémorisation</span>
+    <h2>Flashcards — définitions clés</h2>
+  </div>
+  <p class="section-intro">Clique sur la carte pour la retourner. Récite la définition à voix haute <em>avant</em> de vérifier — c'est la récupération active qui fait progresser !</p>
+  <div class="fc-stage">
+    <div class="fc-card" id="fcCard" tabindex="0" role="button" aria-label="Carte de révision, cliquer pour retourner">
+      <div class="fc-face fc-front">
+        <span class="fc-cat" id="fcCat">Cinétique</span>
+        <div class="fc-term" id="fcTerm">Énergie d'activation</div>
+        <span class="fc-tap">cliquer pour retourner ↻</span>
+      </div>
+      <div class="fc-face fc-back">
+        <p id="fcDef">…</p>
+      </div>
+    </div>
+  </div>
+  <div class="fc-controls">
+    <button class="btn" id="fcPrev" aria-label="Carte précédente">← Précédente</button>
+    <span class="fc-count" id="fcCount">1 / 12</span>
+    <button class="btn" id="fcNext" aria-label="Carte suivante">Suivante →</button>
+    <button class="btn" id="fcShuffle" aria-label="Mélanger les cartes">🔀 Mélanger</button>
+  </div>
+</section>
+<section class="panel" id="panel-train">
+  <div class="section-head">
+    <span class="section-tag" style="background:var(--green)">30 questions + corrigé</span>
+    <h2>Entraînement</h2>
+  </div>
+  <p class="section-intro">Trois niveaux : <strong>Niveau 1</strong> — rappel et application directe · <strong>Niveau 2</strong> — raisonnement et application · <strong>Niveau 3</strong> — contextes non familiers, analyse et réponse étendue. Réponds par écrit avant d'afficher le corrigé, puis coche les questions maîtrisées.</p>
+
+  <div class="progress-wrap">
+    <span class="progress-label"><strong id="progCount">0</strong> / 30 questions maîtrisées <span id="progMsg"></span></span>
+    <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+  </div>
+
+  <div class="level-filter" role="group" aria-label="Filtres">
+    <button class="lv-btn on" data-fsec="all">Toutes les sections</button>
+    <button class="lv-btn" data-fsec="kin" style="--c:var(--kin)">Cinétique</button>
+    <button class="lv-btn" data-fsec="redox">Redox</button>
+    <button class="lv-btn" data-fsec="acid">Acides &amp; bases</button>
+    <span style="width:14px"></span>
+    <button class="lv-btn on" data-flv="all">Tous niveaux</button>
+    <button class="lv-btn" data-flv="1">Niveau 1</button>
+    <button class="lv-btn" data-flv="2">Niveau 2</button>
+    <button class="lv-btn" data-flv="3">Niveau 3</button>
+  </div>
+
+  <div id="qList"></div>
+</section>
+</main>
+<footer class="footer"><div class="ph-mini"></div><p>Sciences Année 10 · Cinétique chimique — Redox — Acides et bases · <a href="index.html" style="color:var(--ink-soft)">Accueil</a> · <a href="revision.html" style="color:var(--ink-soft)">Révision &amp; scores</a></p></footer>
+<script src="app.js"></script>
+<script>
+/* == FLASHCARDS ===================== */
+(function(){
+  const CARDS=[
+    {cat:'Cinétique',c:'var(--kin)',t:'Vitesse de réaction',d:'La variation de la quantité d\'un réactif ou d\'un produit par unité de temps. Sur un graphe quantité/temps, c\'est la pente de la tangente.'},
+    {cat:'Cinétique',c:'var(--kin)',t:'Théorie des collisions',d:'Pour qu\'une réaction se produise, les particules doivent entrer en collision avec une énergie suffisante ET avec la bonne orientation.'},
+    {cat:'Cinétique',c:'var(--kin)',t:'Énergie d\'activation (Eₐ)',d:'L\'énergie minimale que doivent posséder les particules pour que la collision aboutisse à une réaction chimique.'},
+    {cat:'Cinétique',c:'var(--kin)',t:'Catalyseur',d:'Substance qui augmente la vitesse d\'une réaction en abaissant l\'énergie d\'activation. Il n\'est pas consommé pendant la réaction.'},
+    {cat:'Redox',c:'var(--redox)',t:'Oxydation',d:'Perte d\'électrons (l\'espèce est oxydée). OIL : Oxidation Is Loss.'},
+    {cat:'Redox',c:'var(--redox)',t:'Réduction',d:'Gain d\'électrons (l\'espèce est réduite). RIG : Reduction Is Gain.'},
+    {cat:'Redox',c:'var(--redox)',t:'Série d\'activité',d:'Classement des métaux du plus réactif au moins réactif : K > Na > Ca > Mg > Al > Zn > Fe > Pb > (H) > Cu > Ag > Au.'},
+    {cat:'Redox',c:'var(--redox)',t:'Pont salin',d:'Tube contenant une solution d\'électrolyte (ex. KNO₃) qui permet le passage des ions entre les deux demi-cellules pour maintenir la neutralité électrique.'},
+    {cat:'Redox',c:'var(--redox)',t:'q = mCΔT',d:'Chaleur dégagée : masse de la solution (g) × capacité calorifique de l\'eau (4,18 J·g⁻¹·°C⁻¹) × variation de température (°C).'},
+    {cat:'Acides & bases',c:'var(--acid)',t:'Acide de Brønsted-Lowry',d:'Espèce chimique capable de donner un proton (H⁺) à une autre espèce.'},
+    {cat:'Acides & bases',c:'var(--acid)',t:'Base de Brønsted-Lowry',d:'Espèce chimique capable d\'accepter un proton (H⁺).'},
+    {cat:'Acides & bases',c:'var(--acid)',t:'Acide fort vs faible',d:'Fort : se dissocie complètement en ions dans l\'eau (HCl, H₂SO₄, HNO₃). Faible : se dissocie partiellement (CH₃COOH).'},
+    {cat:'Acides & bases',c:'var(--acid)',t:'Neutralisation',d:'Réaction entre un acide et une base produisant un sel et de l\'eau. Au point d\'équivalence : n(acide) = n(base) selon la stœchiométrie.'},
+    {cat:'Acides & bases',c:'var(--acid)',t:'pH et [H⁺]',d:'Le pH diminue d\'une unité pour chaque multiplication par 10 de la concentration en H⁺. pH < 7 acide, pH = 7 neutre, pH > 7 basique.'},
+    {cat:'Acides & bases',c:'var(--acid)',t:'ΔH de neutralisation',d:'ΔH = −q ÷ n (kJ/mol), où n = moles du réactif limitant. Référence acide fort + base forte : ≈ −57 kJ/mol.'}
+  ];
+  let order=CARDS.map((_,i)=>i),pos=0;
+  const card=document.getElementById('fcCard');
+  function show(){
+    const c=CARDS[order[pos]];
+    card.classList.remove('flipped');
+    setTimeout(()=>{
+      document.getElementById('fcCat').textContent=c.cat;
+      document.getElementById('fcCat').style.background=c.c;
+      document.getElementById('fcTerm').textContent=c.t;
+      document.getElementById('fcDef').textContent=c.d;
+      document.getElementById('fcCount').textContent=(pos+1)+' / '+CARDS.length;
+    },card.classList.contains('flipped')?250:0);
+  }
+  card.addEventListener('click',()=>card.classList.toggle('flipped'));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();card.classList.toggle('flipped');}});
+  document.getElementById('fcNext').addEventListener('click',()=>{pos=(pos+1)%CARDS.length;show();});
+  document.getElementById('fcPrev').addEventListener('click',()=>{pos=(pos-1+CARDS.length)%CARDS.length;show();});
+  document.getElementById('fcShuffle').addEventListener('click',()=>{
+    for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+    pos=0;show();
+  });
+  show();
+})();
+
+
+const Q=[
+  /* ---------- KINETICS ---------- */
+  {s:'kin',lv:1,n:1,q:`Donnez <strong>deux</strong> méthodes permettant de mesurer la vitesse d'une réaction produisant un gaz.`,
+   a:`Volume de gaz produit / variation de masse (tout autre exemple valide du tableau accepté).`},
+  {s:'kin',lv:1,n:2,q:`Complétez la phrase : « Pour qu'une collision soit efficace, les particules doivent avoir une énergie supérieure ou égale à ________ et la bonne ________. »`,
+   a:`Énergie d'activation (Eₐ) ; orientation correcte.`},
+  {s:'kin',lv:1,n:3,q:`Expliquez en une phrase pourquoi augmenter la température augmente la vitesse de réaction.`,
+   a:`Les particules ont plus d'énergie cinétique, donc se déplacent plus vite et entrent en collision plus fréquemment et avec plus d'énergie.`},
+  {s:'kin',lv:1,n:4,q:`Qu'est-ce qu'un catalyseur ? Est-il consommé pendant la réaction ?`,
+   a:`Un catalyseur est une substance qui augmente la vitesse de réaction en abaissant l'énergie d'activation. Il n'est <strong>pas</strong> consommé.`},
+  {s:'kin',lv:1,n:5,q:`Sur un graphe quantité de produit/temps, qu'indique une pente plus raide ?`,
+   a:`Une réaction plus rapide (la quantité de produit augmente plus vite par unité de temps).`},
+  {s:'kin',lv:2,n:6,q:`Une réaction entre du marbre (CaCO₃) en morceaux et de l'HCl est comparée à la même réaction avec du marbre en poudre. Expliquez, en faisant référence à la théorie des collisions, pourquoi la réaction avec la poudre est plus rapide.`,
+   a:`Le marbre en poudre a une surface de contact beaucoup plus grande que le marbre en morceaux. Seules les particules à la surface peuvent entrer en collision avec les ions H⁺. Une surface plus grande expose davantage de particules de CaCO₃, ce qui augmente la fréquence des collisions efficaces et donc la vitesse de réaction.`},
+  {s:'kin',lv:2,n:7,q:`Le tableau ci-dessous montre la masse d'un système (acide + carbonate de calcium) au cours du temps. Calculez la vitesse moyenne entre 0 et 60 secondes, et entre 60 et 120 secondes. Que remarquez-vous ?
+   <table><tr><th>Temps (s)</th><th>Masse (g)</th></tr><tr><td>0</td><td>152,0</td></tr><tr><td>60</td><td>150,2</td></tr><tr><td>120</td><td>149,1</td></tr><tr><td>180</td><td>148,6</td></tr><tr><td>240</td><td>148,4</td></tr></table>`,
+   a:`Vitesse moyenne 0–60 s : (152,0 − 150,2) ÷ 60 = <strong>0,030 g/s</strong><br>Vitesse moyenne 60–120 s : (150,2 − 149,1) ÷ 60 = <strong>0,018 g/s</strong><br>La vitesse <strong>diminue</strong> avec le temps car la concentration en HCl diminue.`},
+  {s:'kin',lv:2,n:8,q:`Dessinez un diagramme d'énergie pour une réaction <strong>exothermique</strong> avec et sans catalyseur. Indiquez les réactifs, les produits, Eₐ (avec et sans catalyseur) et la variation d'enthalpie ΔH.`,
+   a:`Diagramme correct avec : réactifs à un niveau &gt; produits (exothermique) ; pic représentant Eₐ sans catalyseur ; pic plus bas représentant Eₐ avec catalyseur ; ΔH négatif clairement indiqué. Les niveaux des réactifs et produits sont inchangés avec/sans catalyseur. <em>(Compare avec le diagramme interactif de la section 1.4 !)</em>`},
+  {s:'kin',lv:3,n:9,q:`Un chimiste étudie la décomposition du peroxyde d'hydrogène (H₂O₂) en eau et en dioxygène. Il observe que l'ajout de dioxyde de manganèse (MnO₂) accélère considérablement la réaction. À la fin de l'expérience, la masse de MnO₂ est inchangée.<br>(a) Quel est le rôle du MnO₂ dans cette réaction ? Justifiez avec deux arguments.<br>(b) Expliquez, en utilisant la théorie des collisions et les diagrammes d'énergie, pourquoi la vitesse est augmentée.<br>(c) Si l'on répète l'expérience à 50 °C au lieu de 20 °C, que se passe-t-il ? Expliquez deux effets distincts sur les collisions.`,
+   a:`<strong>(a)</strong> Le MnO₂ est un catalyseur car : (1) la réaction est accélérée en sa présence ; (2) sa masse est inchangée à la fin de la réaction — il n'est pas consommé.<br><strong>(b)</strong> Le catalyseur abaisse l'Eₐ de la décomposition de H₂O₂. Sur le diagramme d'énergie, le pic est plus bas avec MnO₂. Une plus grande proportion de molécules de H₂O₂ possède maintenant une énergie ≥ Eₐ → proportion de collisions efficaces plus grande → réaction plus rapide.<br><strong>(c)</strong> À 50 °C : (1) les molécules ont plus d'énergie cinétique → collisions plus fréquentes ; (2) une plus grande fraction des molécules dépasse Eₐ → proportion de collisions efficaces plus grande. Les deux effets augmentent la vitesse.`},
+  {s:'kin',lv:3,n:10,q:`Deux élèves débattent : l'un affirme que doubler la concentration d'un réactif double toujours la vitesse de réaction. L'autre dit que ce n'est pas nécessairement vrai. Qui a raison ? Justifiez votre réponse en vous appuyant sur la théorie des collisions.`,
+   a:`Les deux élèves ont partiellement raison. En théorie des collisions simple, doubler la concentration double approximativement la fréquence des collisions, ce qui <strong>peut</strong> doubler la vitesse. Cependant, en pratique, la relation entre concentration et vitesse (loi de vitesse) dépend du mécanisme de la réaction, qui peut être plus complexe. Pour les besoins de ce cours, l'augmentation de concentration augmente la fréquence des collisions et donc la vitesse, mais la relation exacte n'est pas toujours linéaire.`},
+  /* ---------- REDOX ---------- */
+  {s:'redox',lv:1,n:1,q:`Définissez l'oxydation et la réduction en termes de transfert d'électrons.`,
+   a:`Oxydation = perte d'électrons ; Réduction = gain d'électrons.`},
+  {s:'redox',lv:1,n:2,q:`Classez les métaux suivants du plus réactif au moins réactif : Cu, Mg, Fe, Na, Zn.`,
+   a:`Na &gt; Mg &gt; Zn &gt; Fe &gt; Cu`},
+  {s:'redox',lv:1,n:3,q:`Le magnésium réagit-il avec l'eau froide ? Et avec l'acide chlorhydrique ? Justifiez.`,
+   a:`Mg ne réagit pas avec l'eau froide (réaction très lente) mais réagit vigoureusement avec HCl (plus réactif que l'hydrogène dans la série).`},
+  {s:'redox',lv:1,n:4,q:`Dans la demi-équation : Al → Al³⁺ + 3e⁻, l'aluminium est-il oxydé ou réduit ?`,
+   a:`Oxydé (il perd 3 électrons).`},
+  {s:'redox',lv:1,n:5,q:`Qu'est-ce qu'un pont salin dans une pile voltaïque ? Quel est son rôle ?`,
+   a:`Le pont salin est un tube contenant une solution d'électrolyte (ex. KNO₃). Il permet le passage des ions entre les deux demi-cellules pour maintenir la neutralité électrique et permettre la continuité du circuit.`},
+  {s:'redox',lv:2,n:6,q:`On plonge une lame de cuivre dans une solution de nitrate d'argent (AgNO₃). Prédit-on une réaction ? Si oui, écrivez l'équation globale et les demi-équations. Justifiez votre réponse à l'aide de la série d'activité.`,
+   a:`Oui, une réaction a lieu : Cu est plus réactif que Ag, donc Cu peut déplacer Ag⁺.
+   <div class="eq">Cu(s) + 2 AgNO₃(aq) → Cu(NO₃)₂(aq) + 2 Ag(s)</div>
+   <div class="eq">Cu → Cu²⁺ + 2e⁻</div><div class="eq">2 Ag⁺ + 2e⁻ → 2 Ag</div>`},
+  {s:'redox',lv:2,n:7,q:`Lors d'une expérience, on mélange 100 cm³ de solution de sulfate de cuivre(II) à 1 mol/L avec un excès de poudre de magnésium. La température initiale est de 20,0 °C.<br>(a) Prédisez si une réaction a lieu. Justifiez.<br>(b) Si ΔT = 22,6 °C, calculez la chaleur dégagée. (densité ≈ 1 g/cm³)<br>(c) Comparez qualitativement ce résultat avec une même expérience utilisant du zinc. Expliquez.`,
+   a:`<strong>(a)</strong> Oui, Mg est plus réactif que Cu → déplacement de Cu²⁺ par Mg.<br><strong>(b)</strong> m = 100 g, ΔT = 22,6 °C → q = 100 × 4,18 × 22,6 = <strong>9 446,8 J ≈ 9,45 kJ</strong><br><strong>(c)</strong> La chaleur dégagée avec Mg sera plus grande qu'avec Zn, car la différence de réactivité entre Mg et Cu est plus importante → réaction plus exothermique.`},
+  {s:'redox',lv:2,n:8,q:`Expliquez comment la tension d'une pile voltaïque peut être utilisée pour déduire l'ordre de réactivité de trois métaux inconnus A, B, C, à partir de mesures expérimentales.`,
+   a:`On construit des piles A/B, A/C et B/C. Le métal qui constitue systématiquement l'anode (tension positive) est le plus réactif. En comparant les tensions : une tension plus élevée pour A/C qu'A/B suggère que la différence de réactivité A/C &gt; A/B, donc C est moins réactif que B. On classe ensuite A &gt; B &gt; C (ou selon les données).`},
+  {s:'redox',lv:3,n:9,q:`On compare l'extraction de l'aluminium (Al) et du fer (Fe) à partir de leurs minerais.<br>(a) Expliquez pourquoi l'aluminium est extrait par électrolyse et non par réduction au carbone.<br>(b) Écrivez une demi-équation pour la réduction de l'ion Fe³⁺ en Fe.<br>(c) L'extraction de l'aluminium est beaucoup plus coûteuse en énergie que celle du fer. Proposez une explication chimique et une explication économique.`,
+   a:`<strong>(a)</strong> L'aluminium est plus réactif que le carbone → il ne peut pas être réduit par le carbone. L'électrolyse fournit directement des électrons pour réduire Al³⁺.<br><strong>(b)</strong> <span class="eq inlineblock">Fe³⁺ + 3e⁻ → Fe</span><br><strong>(c)</strong> Explication chimique : Al³⁺ a une affinité électronique très élevée et nécessite beaucoup d'énergie pour être réduit. Explication économique : l'électrolyse nécessite des quantités énormes d'électricité, ce qui rend la production coûteuse. En revanche, la réduction du fer par le coke dans un haut-fourneau est thermiquement accessible.`},
+  {s:'redox',lv:3,n:10,q:`Un élève construit trois piles : Mg/Zn (2,0 V), Mg/Fe (1,9 V) et Zn/Fe (0,3 V).<br>(a) Ces données sont-elles cohérentes avec la série d'activité ? Expliquez.<br>(b) Identifiez l'anode et la cathode dans la pile Zn/Fe.<br>(c) Si l'on remplaçait la solution de sulfate de zinc par une solution plus concentrée, quel effet attendrait-on sur la tension et pourquoi ?`,
+   a:`<strong>(a)</strong> Oui, cohérent : Mg &gt; Zn &gt; Fe dans la série. La pile Mg/Zn (2,0 V) &gt; Mg/Fe (1,9 V) — la tension Mg/Zn &gt; Mg/Fe suggère Zn légèrement moins réactif que Fe, ce qui correspond. La pile Zn/Fe (0,3 V) est la plus faible car Zn et Fe sont proches dans la série.<br><strong>(b)</strong> Anode (−) : Zn (plus réactif, s'oxyde) ; Cathode (+) : Fe (se réduit).<br><strong>(c)</strong> Une concentration plus élevée en ions Zn²⁺ tend à défavoriser l'oxydation du zinc (équilibre de Le Chatelier), ce qui pourrait légèrement réduire la tension. En pratique, l'effet est généralement faible pour de petites variations de concentration.`},
+  /* ---------- ACIDS & BASES ---------- */
+  {s:'acid',lv:1,n:1,q:`Définissez un acide et une base selon Brønsted-Lowry.`,
+   a:`Acide : donne un proton (H⁺) ; Base : accepte un proton (H⁺).`},
+  {s:'acid',lv:1,n:2,q:`Donnez <strong>deux</strong> exemples de bases alcalines et <strong>deux</strong> exemples de bases insolubles.`,
+   a:`Bases alcalines : NaOH, Ca(OH)₂ (ou KOH, NH₃) ; Bases insolubles : CaCO₃, ZnO (ou Fe₂O₃, CuO).`},
+  {s:'acid',lv:1,n:3,q:`Quel gaz est produit lorsqu'un acide réagit avec un métal ? Et avec un carbonate ?`,
+   a:`Acide + métal → H₂ (dihydrogène) ; Acide + carbonate → CO₂.`},
+  {s:'acid',lv:1,n:4,q:`Quelle est la différence entre un acide fort et un acide faible ?`,
+   a:`Un acide fort se dissocie complètement en ions dans l'eau ; un acide faible se dissocie partiellement.`},
+  {s:'acid',lv:1,n:5,q:`Quel indicateur est nécessaire pour mesurer des valeurs de pH sur toute l'échelle 0–14 ? Pourquoi les autres indicateurs ne conviennent-ils pas ?`,
+   a:`L'indicateur universel — les autres indicateurs (ex. phénolphtaléine, tournesol) ne changent de couleur qu'autour d'un point précis et ne permettent pas de distinguer les différentes valeurs de pH sur toute l'échelle.`},
+  {s:'acid',lv:2,n:6,q:`Deux solutions d'acide éthanoïque (faible) et d'acide chlorhydrique (fort) ont toutes deux une concentration de 0,1 mol/L.<br>(a) Laquelle a le pH le plus bas ?<br>(b) Laquelle conduit le mieux l'électricité ? Expliquez.<br>(c) Laquelle réagit plus vite avec du carbonate de calcium ? Expliquez à l'aide de la théorie des collisions.`,
+   a:`<strong>(a)</strong> L'acide chlorhydrique (fort) a le pH le plus bas.<br><strong>(b)</strong> HCl conduit mieux l'électricité car il est totalement dissocié → plus d'ions H⁺ et Cl⁻ en solution → plus de porteurs de charge.<br><strong>(c)</strong> HCl réagit plus vite avec CaCO₃ car sa concentration en H⁺ est plus élevée (dissociation totale) → fréquence de collisions plus grande entre H⁺ et CO₃²⁻.`},
+  {s:'acid',lv:2,n:7,q:`Dans un titrage, 20,0 cm³ de H₂SO₄ de concentration inconnue est neutralisé par 32,0 cm³ de NaOH à 0,200 mol/L. Calculez la concentration de l'acide sulfurique. <em>(Attention à la stœchiométrie : H₂SO₄ + 2 NaOH → Na₂SO₄ + 2 H₂O)</em>`,
+   a:`n(NaOH) = 0,200 × 0,032 = 6,4 × 10⁻³ mol<br>Réaction : H₂SO₄ + 2 NaOH → Na₂SO₄ + 2 H₂O<br>n(H₂SO₄) = 6,4 × 10⁻³ ÷ 2 = 3,2 × 10⁻³ mol<br>C(H₂SO₄) = 3,2 × 10⁻³ ÷ 0,020 = <strong>0,160 mol/L</strong>`},
+  {s:'acid',lv:2,n:8,q:`On mélange 100 cm³ de HNO₃ à 0,5 mol/L avec 100 cm³ de KOH à 0,5 mol/L. La température initiale est 19,5 °C et la température finale est 23,2 °C. Calculez q et l'enthalpie molaire de neutralisation. Comparez avec la valeur de référence de −57 kJ/mol et proposez une explication pour tout écart.`,
+   a:`m = 200 g, ΔT = 3,7 °C<br>q = 200 × 4,18 × 3,7 = <strong>3 093,2 J ≈ 3,09 kJ</strong><br>n(HNO₃) = 0,1 L × 0,5 mol/L = 0,05 mol<br>ΔH = −3,09 ÷ 0,05 = <strong>−61,8 kJ/mol</strong><br>Légèrement différent de −57 kJ/mol. Écarts possibles : pertes de chaleur vers l'environnement, hypothèse de densité simplifiée, capacité calorifique de la solution légèrement différente de l'eau pure.`},
+  {s:'acid',lv:3,n:9,q:`L'acide éthanoïque (vinaigre) et l'acide chlorhydrique (acide gastrique) ont des rôles très différents dans la vie quotidienne. Un chimiste compare leurs propriétés à égale concentration (0,1 mol/L).<br>(a) Expliquez, au niveau moléculaire, pourquoi l'acide éthanoïque a une conductivité plus faible.<br>(b) Si l'on dilue chaque solution d'un facteur 10, prédisez et expliquez comment le pH de chacune varie. La variation sera-t-elle identique ?<br>(c) Un élève affirme que l'acide éthanoïque est « moins dangereux » que l'acide chlorhydrique simplement parce qu'il est plus faible. Évaluez de façon critique cette affirmation.`,
+   a:`<strong>(a)</strong> L'acide éthanoïque (CH₃COOH) est faible : seule une petite fraction des molécules est dissociée en ions CH₃COO⁻ et H⁺. Moins d'ions en solution → moins de porteurs de charge → conductivité plus faible.<br><strong>(b)</strong> Pour HCl (fort) : une dilution ×10 diminue [H⁺] d'un facteur 10 → pH augmente d'environ 1 unité. Pour CH₃COOH (faible) : la dilution entraîne une dissociation plus importante (équilibre déplacé) → la variation de pH est moins prévisible et moindre qu'une unité. Les variations ne sont <strong>pas</strong> identiques.<br><strong>(c)</strong> L'affirmation est simpliste. Un acide faible concentré peut être très corrosif. La force chimique n'est qu'un facteur parmi d'autres : la concentration, la réactivité avec les tissus biologiques, la volatilité et le contexte d'exposition comptent tous. L'acide éthanoïque concentré (acide glacial) est dangereux.`},
+  {s:'acid',lv:3,n:10,q:`Un technicien de laboratoire doit préparer du sel de sulfate de cuivre(II) pur (CuSO₄) à partir d'oxyde de cuivre(II) (CuO) et d'acide sulfurique (H₂SO₄).<br>(a) Écrivez l'équation équilibrée pour cette réaction.<br>(b) Expliquez pourquoi on utilise un <strong>excès</strong> de CuO (base insoluble) plutôt qu'un excès d'acide.<br>(c) Décrivez le procédé expérimental pour isoler des cristaux purs de CuSO₄.<br>(d) Si le technicien utilisait à la place NaOH (base soluble) pour neutraliser H₂SO₄, quel sel obtiendrait-il ? Pourquoi cette méthode est-elle moins adaptée pour préparer un sel pur ?`,
+   a:`<strong>(a)</strong> <span class="eq inlineblock">CuO + H₂SO₄ → CuSO₄ + H₂O</span><br><strong>(b)</strong> On utilise un excès de CuO (base insoluble) pour s'assurer que tout l'acide est consommé. Le CuO en excès peut être simplement filtré (il ne se dissout pas dans l'eau). Si on utilisait un excès d'acide, il resterait de l'H₂SO₄ dans la solution finale, contaminant le sel.<br><strong>(c)</strong> Procédé : (1) ajouter CuO en excès à H₂SO₄ chaud ; (2) filtrer l'excès de CuO ; (3) évaporer doucement la solution pour concentrer ; (4) laisser refroidir → cristallisation ; (5) filtrer et sécher les cristaux.<br><strong>(d)</strong> On obtiendrait Na₂SO₄ (sulfate de sodium). Cette méthode est moins adaptée car NaOH est soluble : on ne peut pas filtrer un éventuel excès de base, et il est difficile d'ajouter exactement la quantité stœchiométrique sans titrage précis.`}
+  ];
+(function(){
+  const SEC={kin:{name:'Cinétique',color:'var(--kin)'},redox:{name:'Redox',color:'var(--redox)'},acid:{name:'Acides & bases',color:'var(--acid)'}};
+  const LV_LABEL={1:'Niveau 1 · Rappel',2:'Niveau 2 · Raisonnement',3:'Niveau 3 · Analyse'};
+  const LV_COLOR={1:'#2F9E44',2:'#F9A03F',3:'#D7263D'};
+  const list=document.getElementById('qList');
+  let fsec='all',flv='all';
+  const mastered=new Set(Store.get('mastered',[]));
+
+  Q.forEach((it)=>{
+    const qid=it.s+'-'+it.n;
+    const card=document.createElement('div');card.className='q-card';
+    card.dataset.s=it.s;card.dataset.lv=it.lv;
+    card.innerHTML=`
+      <div class="q-top">
+        <span class="q-num" style="background:${SEC[it.s].color}">${SEC[it.s].name} · Q${it.n}</span>
+        <span class="pill" style="background:${LV_COLOR[it.lv]};align-self:center">${LV_LABEL[it.lv]}</span>
+      </div>
+      <div class="q-text">${it.q}</div>
+      <div class="q-actions">
+        <button class="btn show-a">💡 Afficher la réponse</button>
+        <label class="mastered"><input type="checkbox" ${mastered.has(qid)?'checked':''}>Maîtrisée</label>
+      </div>
+      <div class="answer"><span class="alab">Corrigé</span>${it.a}</div>`;
+    const btn=card.querySelector('.show-a'),ans=card.querySelector('.answer');
+    btn.addEventListener('click',()=>{
+      const on=ans.classList.toggle('show');
+      btn.textContent=on?'🙈 Masquer la réponse':'💡 Afficher la réponse';
+    });
+    card.querySelector('input').addEventListener('change',e=>{
+      e.target.checked?mastered.add(qid):mastered.delete(qid);
+      Store.set('mastered',[...mastered]);
+      updateProgress();renderDash('dash');
+    });
+    list.appendChild(card);
+  });
+
+  function updateProgress(){
+    const n=mastered.size;
+    document.getElementById('progCount').textContent=n;
+    document.getElementById('progFill').style.width=(n/Q.length*100)+'%';
+    const msg=document.getElementById('progMsg');
+    msg.textContent=n===Q.length?'— 🎉 Bravo, tout est maîtrisé !':n>=20?'— excellent rythme 💪':n>=10?'— bon travail, continue !':'';
+  }
+  function applyFilters(){
+    [...list.children].forEach(c=>{
+      const ok=(fsec==='all'||c.dataset.s===fsec)&&(flv==='all'||c.dataset.lv===flv);
+      c.style.display=ok?'':'none';
+    });
+  }
+  document.querySelectorAll('[data-fsec]').forEach(b=>b.addEventListener('click',()=>{
+    fsec=b.dataset.fsec;
+    document.querySelectorAll('[data-fsec]').forEach(x=>x.classList.toggle('on',x===b));
+    applyFilters();
+  }));
+  document.querySelectorAll('[data-flv]').forEach(b=>b.addEventListener('click',()=>{
+    flv=b.dataset.flv;
+    document.querySelectorAll('[data-flv]').forEach(x=>x.classList.toggle('on',x===b));
+    applyFilters();
+  }));
+  updateProgress();
+})();
+</script>
+</body>
+</html>
