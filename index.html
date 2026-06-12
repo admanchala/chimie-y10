@@ -15,20 +15,26 @@
   <div class="hero-inner">
     <p class="hero-eyebrow">Chimie · Année 10 · Révision interactive</p>
     <h1>Cinétique, redox<br>et <span class="accent">acides–bases</span></h1>
-    <p class="hero-sub">Cours complet, simulations interactives, quiz à score automatique et 30 questions d'entraînement avec corrigé. Ta progression est enregistrée sur ton appareil.</p>
+    <p class="hero-sub">Cours complet, simulations interactives, quiz à score automatique, questions type examen et 30 questions d'entraînement avec corrigé. Ta progression est enregistrée sur ton appareil.</p>
   </div>
   <div class="ph-bar" title="Échelle de l'indicateur universel — pH 0 à 14"></div>
 </header>
-<nav class="nav" aria-label="Navigation du site"><div class="nav-inner">
+<nav class="nav" aria-label="Navigation"><div class="nav-inner">
 <a class="tab-btn" href="index.html" aria-current="page">🏠 Accueil</a>
 <a class="tab-btn" href="kinetics.html" style="--tab-color:var(--kin)">1 · Cinétique</a>
 <a class="tab-btn" href="redox.html" style="--tab-color:var(--redox)">2 · Redox</a>
 <a class="tab-btn" href="acids.html" style="--tab-color:var(--acid)">3 · Acides &amp; bases</a>
 <a class="tab-btn" href="revision.html" style="--tab-color:var(--green)">🎯 Révision</a>
+<a class="lang-btn" href="en/index.html" title="Switch to English">🌐 EN</a>
 </div></nav>
 
 <main class="wrap">
-  <div class="section-head"><h2>Choisis ton chapitre</h2></div>
+  <div class="diag-wrap">
+    <div class="diag-head"><span class="section-tag" style="background:var(--ink)">🧭 Test diagnostique</span><h2>Par où commencer ? Teste tes connaissances</h2></div>
+    <p class="section-intro">10 questions rapides sur les trois chapitres. Selon ton score, on te conseille un point de départ personnalisé.</p>
+    <div id="diag"></div>
+  </div>
+  <div class="section-head" style="margin-top:42px"><h2>Les chapitres</h2></div>
   <div class="home-grid">
     <a class="home-card" href="kinetics.html" style="--hc:var(--kin)">
       <h3>1 · Cinétique chimique</h3>
@@ -50,15 +56,15 @@
     </a>
     <a class="home-card" href="revision.html" style="--hc:var(--green)">
       <h3>🎯 Révision &amp; scores</h3>
-      <p>Tableau de bord avec badges, 15 flashcards de définitions et les 30 questions d'entraînement à trois niveaux avec corrigé complet.</p>
+      <p>Tableau de bord avec badges, flashcards, 30 questions d'entraînement à trois niveaux et questions type examen avec barème.</p>
       <div class="mini-track"><div class="mini-fill" data-prog="all" style="background:var(--hc)"></div></div>
       <span class="go">Réviser →</span>
     </a>
   </div>
   <div class="card howto">
     <h4>💡 Comment bien utiliser ce site</h4>
-    <p>1. Sur chaque page de chapitre, commence par lire les <strong>objectifs d'apprentissage</strong> et coche-les au fur et à mesure. 2. Manipule les <strong>simulations</strong> — change les paramètres et observe. 3. Termine par le <strong>quiz éclair</strong> (vise 5/6 pour le badge 🥇). 4. Sur la page Révision, travaille les <strong>flashcards</strong> puis les <strong>questions d'entraînement</strong> : réponds par écrit <em>avant</em> d'afficher le corrigé.</p>
-    <p class="note">Ta progression (objectifs, scores, questions maîtrisées) est enregistrée dans ton navigateur, sur cet appareil uniquement.</p>
+    <p>1. Fais le <strong>test diagnostique</strong> ci-dessus pour savoir où commencer. 2. Sur chaque chapitre, lis les <strong>objectifs d'apprentissage</strong> et coche-les au fur et à mesure. 3. Manipule les <strong>simulations</strong>. 4. Termine par le <strong>quiz éclair</strong> (vise 5/6 pour le badge 🥇). 5. Sur la page Révision : <strong>flashcards</strong>, <strong>questions d'entraînement</strong>, puis <strong>questions type examen</strong> — réponds par écrit <em>avant</em> d'afficher le corrigé.</p>
+    <p class="note">Ta progression est enregistrée dans ton navigateur, sur cet appareil uniquement. Le bouton 🌐 EN en haut à droite bascule le site en anglais.</p>
   </div>
 </main>
 <footer class="footer"><div class="ph-mini"></div><p>Chimie Année 10 · Cinétique chimique — Redox — Acides et bases · <a href="index.html" style="color:var(--ink-soft)">Accueil</a> · <a href="revision.html" style="color:var(--ink-soft)">Révision &amp; scores</a></p></footer>
@@ -93,17 +99,27 @@
 </script>
 <script src="app.js"></script>
 <script>
+const DIAG=[
+{ch:'kin',q:"La vitesse d'une réaction mesure…",o:["la quantité totale de produit formé","la variation de quantité d'un réactif ou produit par unité de temps","la température de la réaction","l'énergie libérée par la réaction"],c:1},
+{ch:'kin',q:"Lequel de ces changements ne rend PAS une réaction plus rapide ?",o:["augmenter la concentration","broyer le solide en poudre","ajouter un catalyseur","diminuer la température"],c:3},
+{ch:'kin',q:"Un catalyseur…",o:["est consommé pendant la réaction","abaisse l'énergie d'activation sans être consommé","augmente l'énergie des produits","ralentit les collisions"],c:1},
+{ch:'redox',q:"D'après OIL RIG, l'oxydation est…",o:["un gain d'électrons","une perte d'électrons","un gain de protons","une perte de masse"],c:1},
+{ch:'redox',q:"Le zinc réagit avec une solution de CuSO₄ car…",o:["le zinc est moins réactif que le cuivre","le zinc est plus réactif que le cuivre","le cuivre est un catalyseur","le sulfate attire le zinc"],c:1},
+{ch:'redox',q:"Dans une pile voltaïque, les électrons circulent…",o:["de la cathode vers l'anode","à travers le pont salin","de l'anode vers la cathode dans le circuit externe","dans les deux sens"],c:2},
+{ch:'redox',q:"Pour extraire l'aluminium de son minerai, on utilise…",o:["la réduction au carbone","l'électrolyse","le chauffage simple","la filtration"],c:1},
+{ch:'acid',q:"Selon Brønsted-Lowry, un acide est une espèce qui…",o:["accepte un proton","donne un proton (H⁺)","produit des ions OH⁻","conduit l'électricité"],c:1},
+{ch:'acid',q:"Le pH passe de 3 à 4. La concentration en H⁺ a été…",o:["multipliée par 10","divisée par 10","augmentée de 1","divisée par 2"],c:1},
+{ch:'acid',q:"Quel gaz se dégage quand un acide réagit avec un carbonate ?",o:["H₂","O₂","CO₂","Cl₂"],c:2}];
 
 document.addEventListener('DOMContentLoaded',()=>{
+  renderDiag(document.getElementById('diag'),DIAG);
   document.querySelectorAll('[data-prog]').forEach(el=>{
-    const k=el.dataset.prog;
-    let pct;
+    const k=el.dataset.prog;let pct;
     if(k==='all'){const v=['kin','redox','acid'].map(c=>chapterStats(c).pct);pct=Math.round(v.reduce((a,b)=>a+b,0)/3);}
     else pct=chapterStats(k).pct;
     el.style.width=pct+'%';
   });
 });
-
 </script>
 </body>
 </html>

@@ -178,9 +178,11 @@ details.ex .ex-body{padding:4px 22px 20px;border-top:1px dashed var(--line)}
 /* ---------- multipage nav ---------- */
 a.tab-btn{text-decoration:none;display:inline-block}
 a.tab-btn[aria-current="page"]{color:var(--ink);border-bottom-color:var(--tab-color,var(--ink))}
+.nav-inner{align-items:center}
+.lang-btn{margin-left:auto;font-family:var(--font-mono);font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;white-space:nowrap;transition:.15s}
+.lang-btn:hover{border-color:var(--ink);transform:translateY(-1px)}
 .page-hero{background:var(--deep)}
 .page-hero .ph-bar{height:6px}
-
 /* ---------- learning objectives ---------- */
 .obj-card{border-left:4px solid var(--accent,var(--ink));margin-bottom:30px}
 .obj-list{list-style:none;margin-top:10px}
@@ -190,12 +192,10 @@ a.tab-btn[aria-current="page"]{color:var(--ink);border-bottom-color:var(--tab-co
 .obj-list input{accent-color:var(--accent,var(--green));width:19px;height:19px;margin-top:2px;flex-shrink:0;cursor:pointer}
 .obj-list input:checked+span{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:rgba(0,0,0,.3)}
 .obj-progress{font-family:var(--font-mono);font-size:13px;color:var(--ink-soft);margin-top:12px}
-
-/* ---------- figures / diagrams ---------- */
+/* ---------- figures ---------- */
 .fig{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px 14px;box-shadow:var(--shadow);margin-bottom:18px}
 .fig svg{width:100%;height:auto;display:block}
 .fig figcaption{font-size:14.5px;color:var(--ink-soft);margin-top:10px;text-align:center}
-
 /* ---------- quiz ---------- */
 .quiz-q{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-bottom:14px;box-shadow:var(--shadow)}
 .quiz-q .qq{font-weight:700;margin-bottom:12px;display:flex;gap:10px}
@@ -211,7 +211,6 @@ a.tab-btn[aria-current="page"]{color:var(--ink);border-bottom-color:var(--tab-co
 .quiz-banner.gold{background:linear-gradient(120deg,#FFF6E0,#FFEAC2);border:1px solid #F3CE7E}
 .quiz-banner.mid{background:var(--card);border:1px solid var(--line)}
 .quiz-score-live{font-family:var(--font-mono);font-size:14px;color:var(--ink-soft);margin-bottom:14px}
-
 /* ---------- badges & dashboard ---------- */
 .badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-display);font-weight:600;font-size:14px;padding:6px 14px;border-radius:999px}
 .badge.gold{background:#FFF1CC;color:#8A6100;border:1.5px solid #F3CE7E}
@@ -226,8 +225,7 @@ a.tab-btn[aria-current="page"]{color:var(--ink);border-bottom-color:var(--tab-co
 .dash-card a:hover{text-decoration:underline}
 .mini-track{height:8px;border-radius:5px;background:#EAEFEA;overflow:hidden;margin:8px 0 12px}
 .mini-fill{height:100%;border-radius:5px;background:var(--dc);transition:width .5s ease}
-
-/* ---------- home page ---------- */
+/* ---------- home ---------- */
 .home-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
 @media(max-width:760px){.home-grid{grid-template-columns:1fr}}
 .home-card{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--hc,var(--ink));border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);display:block;transition:.18s}
@@ -236,3 +234,12 @@ a.tab-btn[aria-current="page"]{color:var(--ink);border-bottom-color:var(--tab-co
 .home-card p{color:var(--ink-soft);font-size:15.5px;margin-bottom:14px}
 .home-card .go{font-weight:700;color:var(--hc);font-size:15px}
 .howto{margin-top:34px}
+/* ---------- diagnostic ---------- */
+.diag-wrap{margin-top:36px}
+.diag-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.diag-head h2{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:700}
+/* ---------- exam-style questions ---------- */
+.exam-marks{font-family:var(--font-mono);font-size:12px;background:var(--ink);color:#fff;border-radius:6px;padding:4px 10px;flex-shrink:0;align-self:center}
+.ms{padding-left:22px;margin-top:8px}
+.ms li{margin-bottom:7px}
+.tipbox{background:var(--kin-soft);border:1px solid #F3CDB2;border-radius:var(--radius);padding:16px 20px;margin:14px 0 24px;font-size:15.5px}

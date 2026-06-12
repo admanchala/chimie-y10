@@ -3,19 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Révision & scores — Sciences Année 10</title>
+<title>Révision & scores — Chimie Année 10</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="page-hero"><div class="ph-bar"></div></header>
-<nav class="nav" aria-label="Navigation du site"><div class="nav-inner">
+<nav class="nav" aria-label="Navigation"><div class="nav-inner">
 <a class="tab-btn" href="index.html">🏠 Accueil</a>
 <a class="tab-btn" href="kinetics.html" style="--tab-color:var(--kin)">1 · Cinétique</a>
 <a class="tab-btn" href="redox.html" style="--tab-color:var(--redox)">2 · Redox</a>
 <a class="tab-btn" href="acids.html" style="--tab-color:var(--acid)">3 · Acides &amp; bases</a>
 <a class="tab-btn" href="revision.html" style="--tab-color:var(--green)" aria-current="page">🎯 Révision</a>
+<a class="lang-btn" href="en/revision.html" title="Switch to English">🌐 EN</a>
 </div></nav>
 <main class="wrap">
 <section class="panel"><div class="section-head"><span class="section-tag" style="background:var(--green)">Ta progression</span><h2>Tableau de bord</h2></div><p class="section-intro">Chaque chapitre combine trois éléments : les objectifs cochés, ton meilleur score au quiz éclair, et les questions d'entraînement maîtrisées. Décroche le badge 🥇 à 80 % !</p><div class="dash-grid" id="dash"></div></section>
@@ -70,8 +71,16 @@
 
   <div id="qList"></div>
 </section>
+<section class="panel" style="--accent:var(--green)"><div class="section-head"><span class="section-tag" style="background:var(--ink)">Type examen</span><h2>Questions type examen</h2></div><p class="section-intro">Des questions plus longues, notées sur plusieurs points, comme en contrôle. Rédige une réponse complète <em>avant</em> d'ouvrir le barème.</p><div class="tipbox">📝 <strong>Méthode :</strong> en général, <strong>1 point = 1 idée scientifique</strong>. Pour une question à 4 points, ta réponse doit contenir 4 affirmations distinctes et enchaînées logiquement — pas une seule phrase vague.</div><div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--kin)">Cinétique · E1</span><span class="exam-marks">[4 points]</span></div><div class="q-text">Explique pourquoi la réaction entre le magnésium et l'acide chlorhydrique est plus rapide à 40 °C qu'à 20 °C, en utilisant la théorie des collisions.</div><div class="q-actions"><button class="btn show-ms" data-show="Afficher le barème" data-hide="Masquer le barème">💡 Afficher le barème</button></div><div class="answer"><span class="alab">Barème</span><ul class="ms"><li>À 40 °C, les particules possèdent une énergie cinétique moyenne plus élevée <strong>(1)</strong></li><li>Elles se déplacent plus vite → les collisions entre les ions H⁺ et les atomes de Mg sont plus fréquentes <strong>(1)</strong></li><li>Une plus grande proportion de particules possède une énergie ≥ Eₐ <strong>(1)</strong></li><li>La proportion de collisions efficaces augmente → la vitesse de réaction est plus élevée <strong>(1)</strong></li></ul></div></div>
+<div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--kin)">Cinétique · E2</span><span class="exam-marks">[6 points]</span></div><div class="q-text">Un élève étudie la réaction entre le carbonate de calcium et l'acide chlorhydrique en mesurant le volume de CO₂ dégagé au cours du temps.<br>(a) Décris comment la vitesse de réaction évolue au cours du temps et explique pourquoi. <strong>[3]</strong><br>(b) L'expérience est répétée avec de l'HCl plus concentré (même volume, CaCO₃ en excès). Décris l'allure de la nouvelle courbe par rapport à la première : pente initiale et volume final de CO₂. Justifie. <strong>[3]</strong></div><div class="q-actions"><button class="btn show-ms" data-show="Afficher le barème" data-hide="Masquer le barème">💡 Afficher le barème</button></div><div class="answer"><span class="alab">Barème</span><ul class="ms"><li>(a) La vitesse est maximale au début (pente la plus raide) <strong>(1)</strong></li><li>(a) Elle diminue au cours du temps car la concentration en HCl diminue → collisions moins fréquentes <strong>(1)</strong></li><li>(a) La courbe devient horizontale : la réaction est terminée (réactif limitant épuisé) <strong>(1)</strong></li><li>(b) Pente initiale plus raide : plus d'ions H⁺ par unité de volume → collisions plus fréquentes <strong>(1)</strong></li><li>(b) La réaction se termine plus tôt <strong>(1)</strong></li><li>(b) Volume final de CO₂ plus grand car davantage de moles de HCl ont réagi (HCl limitant) <strong>(1)</strong></li></ul></div></div>
+<div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--redox)">Redox · E1</span><span class="exam-marks">[4 points]</span></div><div class="q-text">Une lame de zinc est plongée dans une solution de nitrate d'argent (AgNO₃). Décris ce que l'on observe et explique la réaction à l'aide de la série d'activité et des demi-équations.</div><div class="q-actions"><button class="btn show-ms" data-show="Afficher le barème" data-hide="Masquer le barème">💡 Afficher le barème</button></div><div class="answer"><span class="alab">Barème</span><ul class="ms"><li>Observation : un dépôt gris/argenté se forme sur la lame de zinc (argent métallique) <strong>(1)</strong></li><li>Zn est plus réactif que Ag → Zn déplace Ag⁺ de sa solution saline <strong>(1)</strong></li><li>Oxydation : Zn → Zn²⁺ + 2e⁻ <strong>(1)</strong></li><li>Réduction : 2 Ag⁺ + 2e⁻ → 2 Ag <strong>(1)</strong></li></ul></div></div>
+<div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--redox)">Redox · E2</span><span class="exam-marks">[5 points]</span></div><div class="q-text">On construit une pile voltaïque avec une électrode de magnésium et une électrode de cuivre reliées par un pont salin.<br>(a) Identifie l'anode et la cathode. <strong>[1]</strong><br>(b) Écris les deux demi-équations. <strong>[2]</strong><br>(c) Indique le sens de circulation des électrons. <strong>[1]</strong><br>(d) Prédis si la tension sera plus ou moins élevée qu'une pile Zn/Cu. Justifie. <strong>[1]</strong></div><div class="q-actions"><button class="btn show-ms" data-show="Afficher le barème" data-hide="Masquer le barème">💡 Afficher le barème</button></div><div class="answer"><span class="alab">Barème</span><ul class="ms"><li>(a) Anode (−) : Mg (le plus réactif) ; Cathode (+) : Cu <strong>(1)</strong></li><li>(b) Mg → Mg²⁺ + 2e⁻ <strong>(1)</strong></li><li>(b) Cu²⁺ + 2e⁻ → Cu <strong>(1)</strong></li><li>(c) Les électrons circulent de l'anode (Mg) vers la cathode (Cu) dans le circuit externe <strong>(1)</strong></li><li>(d) Tension plus élevée : la différence de réactivité Mg/Cu est plus grande que Zn/Cu (≈ 2,7 V vs 1,1 V) <strong>(1)</strong></li></ul></div></div>
+<div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--acid)">Acides & bases · E1</span><span class="exam-marks">[4 points]</span></div><div class="q-text">À concentration égale (0,1 mol/L), l'acide éthanoïque réagit plus lentement avec le magnésium que l'acide chlorhydrique. Explique pourquoi, en utilisant les notions d'acide fort/faible et la théorie des collisions.</div><div class="q-actions"><button class="btn show-ms" data-show="Afficher le barème" data-hide="Masquer le barème">💡 Afficher le barème</button></div><div class="answer"><span class="alab">Barème</span><ul class="ms"><li>L'acide éthanoïque est un acide faible : il se dissocie partiellement en ions <strong>(1)</strong></li><li>HCl est un acide fort : dissociation complète → [H⁺] plus élevée <strong>(1)</strong></li><li>Avec l'acide éthanoïque, la concentration en H⁺ est plus faible → collisions H⁺/Mg moins fréquentes <strong>(1)</strong></li><li>Fréquence de collisions efficaces plus faible → vitesse de réaction plus lente <strong>(1)</strong></li></ul></div></div>
+<div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--acid)">Acides & bases · E2</span><span class="exam-marks">[6 points]</span></div><div class="q-text">Un élève titre 25,0 cm³ d'une solution de HCl de concentration inconnue avec du NaOH à 0,150 mol/L. Le point d'équivalence est atteint après l'ajout de 22,0 cm³ de NaOH.<br>(a) Écris l'équation équilibrée de la réaction. <strong>[1]</strong><br>(b) Calcule le nombre de moles de NaOH ajoutées. <strong>[1]</strong><br>(c) Déduis le nombre de moles de HCl. <strong>[1]</strong><br>(d) Calcule la concentration du HCl. <strong>[2]</strong><br>(e) Nomme un indicateur approprié et le changement de couleur observé au point d'équivalence. <strong>[1]</strong></div><div class="q-actions"><button class="btn show-ms" data-show="Afficher le barème" data-hide="Masquer le barème">💡 Afficher le barème</button></div><div class="answer"><span class="alab">Barème</span><ul class="ms"><li>(a) HCl + NaOH → NaCl + H₂O <strong>(1)</strong></li><li>(b) n(NaOH) = 0,150 × 0,0220 = 3,30 × 10⁻³ mol <strong>(1)</strong></li><li>(c) Réaction 1:1 → n(HCl) = 3,30 × 10⁻³ mol <strong>(1)</strong></li><li>(d) C = n ÷ V = 3,30 × 10⁻³ ÷ 0,0250 <strong>(1)</strong> = <strong>0,132 mol/L</strong> <strong>(1)</strong></li><li>(e) Ex. phénolphtaléine : rose → incolore (en versant la base dans l'acide : incolore → rose) ; tout indicateur à virage net accepté <strong>(1)</strong></li></ul></div></div>
+</section>
+
 </main>
-<footer class="footer"><div class="ph-mini"></div><p>Sciences Année 10 · Cinétique chimique — Redox — Acides et bases · <a href="index.html" style="color:var(--ink-soft)">Accueil</a> · <a href="revision.html" style="color:var(--ink-soft)">Révision &amp; scores</a></p></footer>
+<footer class="footer"><div class="ph-mini"></div><p>Chimie Année 10 · Cinétique chimique — Redox — Acides et bases · <a href="index.html" style="color:var(--ink-soft)">Accueil</a> · <a href="revision.html" style="color:var(--ink-soft)">Révision &amp; scores</a></p></footer>
 <script src="app.js"></script>
 <script>
 /* == FLASHCARDS ===================== */
@@ -190,10 +199,10 @@ const Q=[
   const SEC={kin:{name:'Cinétique',color:'var(--kin)'},redox:{name:'Redox',color:'var(--redox)'},acid:{name:'Acides & bases',color:'var(--acid)'}};
   const LV_LABEL={1:'Niveau 1 · Rappel',2:'Niveau 2 · Raisonnement',3:'Niveau 3 · Analyse'};
   const LV_COLOR={1:'#2F9E44',2:'#F9A03F',3:'#D7263D'};
+  const SHOW='💡 Afficher la réponse',HIDE='🙈 Masquer la réponse';
   const list=document.getElementById('qList');
   let fsec='all',flv='all';
   const mastered=new Set(Store.get('mastered',[]));
-
   Q.forEach((it)=>{
     const qid=it.s+'-'+it.n;
     const card=document.createElement('div');card.className='q-card';
@@ -205,48 +214,42 @@ const Q=[
       </div>
       <div class="q-text">${it.q}</div>
       <div class="q-actions">
-        <button class="btn show-a">💡 Afficher la réponse</button>
+        <button class="btn show-a">${SHOW}</button>
         <label class="mastered"><input type="checkbox" ${mastered.has(qid)?'checked':''}>Maîtrisée</label>
       </div>
       <div class="answer"><span class="alab">Corrigé</span>${it.a}</div>`;
     const btn=card.querySelector('.show-a'),ans=card.querySelector('.answer');
-    btn.addEventListener('click',()=>{
-      const on=ans.classList.toggle('show');
-      btn.textContent=on?'🙈 Masquer la réponse':'💡 Afficher la réponse';
-    });
+    btn.addEventListener('click',()=>{btn.textContent=ans.classList.toggle('show')?HIDE:SHOW;});
     card.querySelector('input').addEventListener('change',e=>{
       e.target.checked?mastered.add(qid):mastered.delete(qid);
-      Store.set('mastered',[...mastered]);
-      updateProgress();renderDash('dash');
+      Store.set('mastered',[...mastered]);updateProgress();renderDash('dash');
     });
     list.appendChild(card);
   });
-
   function updateProgress(){
     const n=mastered.size;
     document.getElementById('progCount').textContent=n;
     document.getElementById('progFill').style.width=(n/Q.length*100)+'%';
-    const msg=document.getElementById('progMsg');
-    msg.textContent=n===Q.length?'— 🎉 Bravo, tout est maîtrisé !':n>=20?'— excellent rythme 💪':n>=10?'— bon travail, continue !':'';
+    document.getElementById('progMsg').textContent=n===Q.length?'— 🎉 Bravo, tout est maîtrisé !':n>=20?'— excellent rythme 💪':n>=10?'— bon travail, continue !':'';
   }
   function applyFilters(){
     [...list.children].forEach(c=>{
-      const ok=(fsec==='all'||c.dataset.s===fsec)&&(flv==='all'||c.dataset.lv===flv);
-      c.style.display=ok?'':'none';
-    });
+      c.style.display=((fsec==='all'||c.dataset.s===fsec)&&(flv==='all'||c.dataset.lv===flv))?'':'none';});
   }
   document.querySelectorAll('[data-fsec]').forEach(b=>b.addEventListener('click',()=>{
-    fsec=b.dataset.fsec;
-    document.querySelectorAll('[data-fsec]').forEach(x=>x.classList.toggle('on',x===b));
-    applyFilters();
-  }));
+    fsec=b.dataset.fsec;document.querySelectorAll('[data-fsec]').forEach(x=>x.classList.toggle('on',x===b));applyFilters();}));
   document.querySelectorAll('[data-flv]').forEach(b=>b.addEventListener('click',()=>{
-    flv=b.dataset.flv;
-    document.querySelectorAll('[data-flv]').forEach(x=>x.classList.toggle('on',x===b));
-    applyFilters();
-  }));
+    flv=b.dataset.flv;document.querySelectorAll('[data-flv]').forEach(x=>x.classList.toggle('on',x===b));applyFilters();}));
   updateProgress();
+  const p=new URLSearchParams(location.search);
+  if(p.get('lv')){const b=document.querySelector(`[data-flv="${p.get('lv')}"]`);if(b)b.click();}
+  if(p.get('sec')){const b=document.querySelector(`[data-fsec="${p.get('sec')}"]`);if(b)b.click();}
 })();
+document.querySelectorAll('.show-ms').forEach(b=>b.addEventListener('click',()=>{
+  const a=b.closest('.q-card').querySelector('.answer');
+  const on=a.classList.toggle('show');
+  b.textContent='💡 '+(on?b.dataset.hide:b.dataset.show);
+}));
 </script>
 </body>
 </html>
