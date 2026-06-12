@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry Year 10 — Interactive revision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Chemistry · Year 10 · Interactive revision</p>
+    <h1>Kinetics, redox<br>and <span class="accent">acids–bases</span></h1>
+    <p class="hero-sub">Complete course notes, interactive simulations, auto-scored quizzes, exam-style questions and 30 practice questions with full answers. Your progress is saved on your device.</p>
+  </div>
+  <div class="ph-bar" title="Universal indicator scale — pH 0 to 14"></div>
+</header>
+<nav class="nav" aria-label="Navigation"><div class="nav-inner">
+<a class="tab-btn" href="index.html" aria-current="page">🏠 Home</a>
+<a class="tab-btn" href="kinetics.html" style="--tab-color:var(--kin)">1 · Kinetics</a>
+<a class="tab-btn" href="redox.html" style="--tab-color:var(--redox)">2 · Redox</a>
+<a class="tab-btn" href="acids.html" style="--tab-color:var(--acid)">3 · Acids &amp; bases</a>
+<a class="tab-btn" href="revision.html" style="--tab-color:var(--green)">🎯 Revision</a>
+<a class="lang-btn" href="../index.html" title="Passer en français">🌐 FR</a>
+</div></nav>
+
+<main class="wrap">
+  <div class="diag-wrap">
+    <div class="diag-head"><span class="section-tag" style="background:var(--ink)">🧭 Diagnostic test</span><h2>Where should you start? Test your knowledge</h2></div>
+    <p class="section-intro">10 quick questions covering all three chapters. Based on your score, you'll get a personalised starting point.</p>
+    <div id="diag"></div>
+  </div>
+  <div class="section-head" style="margin-top:42px"><h2>The chapters</h2></div>
+  <div class="home-grid">
+    <a class="home-card" href="kinetics.html" style="--hc:var(--kin)">
+      <h3>1 · Chemical kinetics</h3>
+      <p>Rate of reaction, collision theory, factors affecting rate and catalysts — with a collision simulator and an interactive energy diagram.</p>
+      <div class="mini-track"><div class="mini-fill" data-prog="kin" style="background:var(--hc)"></div></div>
+      <span class="go">Start →</span>
+    </a>
+    <a class="home-card" href="redox.html" style="--hc:var(--redox)">
+      <h3>2 · Redox &amp; metals</h3>
+      <p>Oxidation, activity series, displacement, extraction, calorimetry and voltaic cells — with a cell builder and a q = mCΔT calculator.</p>
+      <div class="mini-track"><div class="mini-fill" data-prog="redox" style="background:var(--hc)"></div></div>
+      <span class="go">Start →</span>
+    </a>
+    <a class="home-card" href="acids.html" style="--hc:var(--acid)">
+      <h3>3 · Acids &amp; bases</h3>
+      <p>Brønsted-Lowry, strong vs weak, pH, neutralisation and titration — with a pH explorer and a dissociation visualiser.</p>
+      <div class="mini-track"><div class="mini-fill" data-prog="acid" style="background:var(--hc)"></div></div>
+      <span class="go">Start →</span>
+    </a>
+    <a class="home-card" href="revision.html" style="--hc:var(--green)">
+      <h3>🎯 Revision &amp; scores</h3>
+      <p>Dashboard with badges, flashcards, 30 practice questions across three levels and exam-style questions with markschemes.</p>
+      <div class="mini-track"><div class="mini-fill" data-prog="all" style="background:var(--hc)"></div></div>
+      <span class="go">Revise →</span>
+    </a>
+  </div>
+  <div class="card howto">
+    <h4>💡 How to get the most out of this site</h4>
+    <p>1. Take the <strong>diagnostic test</strong> above to find out where to start. 2. On each chapter, read the <strong>learning objectives</strong> and tick them off as you go. 3. Play with the <strong>simulations</strong>. 4. Finish with the <strong>quick quiz</strong> (aim for 5/6 to earn the 🥇 badge). 5. On the Revision page: <strong>flashcards</strong>, <strong>practice questions</strong>, then <strong>exam-style questions</strong> — answer in writing <em>before</em> revealing the answers.</p>
+    <p class="note">Your progress is saved in your browser, on this device only. The 🌐 FR button at the top right switches the site to French — your progress carries over.</p>
+  </div>
+</main>
+<footer class="footer"><div class="ph-mini"></div><p>Chemistry Year 10 · Chemical kinetics — Redox — Acids and bases · <a href="index.html" style="color:var(--ink-soft)">Home</a> · <a href="revision.html" style="color:var(--ink-soft)">Revision &amp; scores</a></p></footer>
+<script>
+/* == HERO PARTICLES ===================== */
+(function(){
+  const cv=document.getElementById('heroCanvas'),ctx=cv.getContext('2d');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let parts=[];
+  function resize(){cv.width=cv.offsetWidth*devicePixelRatio;cv.height=cv.offsetHeight*devicePixelRatio;}
+  resize();addEventListener('resize',resize);
+  const COLORS=['#F9A03F','#1B998B','#C77DFF','#F46036'];
+  for(let i=0;i<34;i++)parts.push({x:Math.random(),y:Math.random(),vx:(Math.random()-.5)*.0009,vy:(Math.random()-.5)*.0009,r:2+Math.random()*3.5,c:COLORS[i%4]});
+  function frame(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    const W=cv.width,H=cv.height;
+    // bonds between close particles
+    for(let i=0;i<parts.length;i++)for(let j=i+1;j<parts.length;j++){
+      const a=parts[i],b=parts[j],dx=(a.x-b.x)*W,dy=(a.y-b.y)*H,d=Math.hypot(dx,dy);
+      if(d<W*0.09){ctx.strokeStyle='rgba(157,188,175,'+(0.16*(1-d/(W*0.09)))+')';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(a.x*W,a.y*H);ctx.lineTo(b.x*W,b.y*H);ctx.stroke();}
+    }
+    parts.forEach(p=>{
+      if(!reduced){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>1)p.vx*=-1;if(p.y<0||p.y>1)p.vy*=-1;}
+      ctx.fillStyle=p.c;ctx.globalAlpha=.8;ctx.beginPath();ctx.arc(p.x*W,p.y*H,p.r*devicePixelRatio,0,7);ctx.fill();ctx.globalAlpha=1;
+    });
+    if(!reduced)requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+
+</script>
+<script src="../app.js"></script>
+<script>
+const DIAG=[
+{ch:'kin',q:"The rate of a reaction measures…",o:["the total amount of product formed","the change in the amount of a reactant or product per unit of time","the temperature of the reaction","the energy released by the reaction"],c:1},
+{ch:'kin',q:"Which of these changes does NOT make a reaction faster?",o:["increasing the concentration","grinding the solid into a powder","adding a catalyst","decreasing the temperature"],c:3},
+{ch:'kin',q:"A catalyst…",o:["is used up during the reaction","lowers the activation energy without being used up","increases the energy of the products","slows the collisions down"],c:1},
+{ch:'redox',q:"According to OIL RIG, oxidation is…",o:["a gain of electrons","a loss of electrons","a gain of protons","a loss of mass"],c:1},
+{ch:'redox',q:"Zinc reacts with a CuSO₄ solution because…",o:["zinc is less reactive than copper","zinc is more reactive than copper","copper is a catalyst","the sulfate attracts the zinc"],c:1},
+{ch:'redox',q:"In a voltaic cell, the electrons flow…",o:["from the cathode to the anode","through the salt bridge","from the anode to the cathode through the external circuit","in both directions"],c:2},
+{ch:'redox',q:"To extract aluminium from its ore, you use…",o:["reduction with carbon","electrolysis","simple heating","filtration"],c:1},
+{ch:'acid',q:"According to Brønsted-Lowry, an acid is a species that…",o:["accepts a proton","donates a proton (H⁺)","produces OH⁻ ions","conducts electricity"],c:1},
+{ch:'acid',q:"The pH goes from 3 to 4. The H⁺ concentration has been…",o:["multiplied by 10","divided by 10","increased by 1","divided by 2"],c:1},
+{ch:'acid',q:"Which gas is released when an acid reacts with a carbonate?",o:["H₂","O₂","CO₂","Cl₂"],c:2}];
+
+document.addEventListener('DOMContentLoaded',()=>{
+  renderDiag(document.getElementById('diag'),DIAG);
+  document.querySelectorAll('[data-prog]').forEach(el=>{
+    const k=el.dataset.prog;let pct;
+    if(k==='all'){const v=['kin','redox','acid'].map(c=>chapterStats(c).pct);pct=Math.round(v.reduce((a,b)=>a+b,0)/3);}
+    else pct=chapterStats(k).pct;
+    el.style.width=pct+'%';
+  });
+});
+</script>
+</body>
+</html>

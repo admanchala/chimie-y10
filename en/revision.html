@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revision & scores — Chemistry Year 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="page-hero"><div class="ph-bar"></div></header>
+<nav class="nav" aria-label="Navigation"><div class="nav-inner">
+<a class="tab-btn" href="index.html">🏠 Home</a>
+<a class="tab-btn" href="kinetics.html" style="--tab-color:var(--kin)">1 · Kinetics</a>
+<a class="tab-btn" href="redox.html" style="--tab-color:var(--redox)">2 · Redox</a>
+<a class="tab-btn" href="acids.html" style="--tab-color:var(--acid)">3 · Acids &amp; bases</a>
+<a class="tab-btn" href="revision.html" style="--tab-color:var(--green)" aria-current="page">🎯 Revision</a>
+<a class="lang-btn" href="../revision.html" title="Passer en français">🌐 FR</a>
+</div></nav>
+<main class="wrap">
+<section class="panel"><div class="section-head"><span class="section-tag" style="background:var(--green)">Your progress</span><h2>Dashboard</h2></div><p class="section-intro">Each chapter combines three elements: the objectives you have ticked, your best quick-quiz score, and the practice questions you have mastered. Earn the 🥇 badge at 80%!</p><div class="dash-grid" id="dash"></div></section>
+<section class="panel" id="panel-flash">
+  <div class="section-head">
+    <span class="section-tag" style="background:#F9A03F">Memorisation</span>
+    <h2>Flashcards — key definitions</h2>
+  </div>
+  <p class="section-intro">Click the card to flip it. Say the definition out loud <em>before</em> checking — active recall is what makes you improve!</p>
+  <div class="fc-stage">
+    <div class="fc-card" id="fcCard" tabindex="0" role="button" aria-label="Revision card, click to flip">
+      <div class="fc-face fc-front">
+        <span class="fc-cat" id="fcCat">Kinetics</span>
+        <div class="fc-term" id="fcTerm">Activation energy</div>
+        <span class="fc-tap">click to flip ↻</span>
+      </div>
+      <div class="fc-face fc-back">
+        <p id="fcDef">…</p>
+      </div>
+    </div>
+  </div>
+  <div class="fc-controls">
+    <button class="btn" id="fcPrev" aria-label="Previous card">← Previous</button>
+    <span class="fc-count" id="fcCount">1 / 15</span>
+    <button class="btn" id="fcNext" aria-label="Next card">Next →</button>
+    <button class="btn" id="fcShuffle" aria-label="Shuffle cards">🔀 Shuffle</button>
+  </div>
+</section>
+<section class="panel" id="panel-train">
+  <div class="section-head">
+    <span class="section-tag" style="background:var(--green)">30 questions + answers</span>
+    <h2>Practice</h2>
+  </div>
+  <p class="section-intro">Three levels: <strong>Level 1</strong> — recall and direct application · <strong>Level 2</strong> — reasoning and application · <strong>Level 3</strong> — unfamiliar contexts, analysis and extended response. Answer in writing before revealing the answer key, then tick off the questions you have mastered.</p>
+
+  <div class="progress-wrap">
+    <span class="progress-label"><strong id="progCount">0</strong> / 30 questions mastered <span id="progMsg"></span></span>
+    <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+  </div>
+
+  <div class="level-filter" role="group" aria-label="Filters">
+    <button class="lv-btn on" data-fsec="all">All sections</button>
+    <button class="lv-btn" data-fsec="kin">Kinetics</button>
+    <button class="lv-btn" data-fsec="redox">Redox</button>
+    <button class="lv-btn" data-fsec="acid">Acids &amp; bases</button>
+    <span style="width:14px"></span>
+    <button class="lv-btn on" data-flv="all">All levels</button>
+    <button class="lv-btn" data-flv="1">Level 1</button>
+    <button class="lv-btn" data-flv="2">Level 2</button>
+    <button class="lv-btn" data-flv="3">Level 3</button>
+  </div>
+
+  <div id="qList"></div>
+</section>
+<section class="panel" style="--accent:var(--green)"><div class="section-head"><span class="section-tag" style="background:var(--ink)">Exam-style</span><h2>Exam-style questions</h2></div><p class="section-intro">Longer questions worth several marks, just like in a test. Write a full answer <em>before</em> opening the markscheme.</p><div class="tipbox">📝 <strong>Method:</strong> as a rule, <strong>1 mark = 1 scientific idea</strong>. For a 4-mark question, your answer should contain 4 distinct, logically connected statements — not a single vague sentence.</div><div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--kin)">Kinetics · E1</span><span class="exam-marks">[4 marks]</span></div><div class="q-text">Using collision theory, explain why the reaction between magnesium and hydrochloric acid is faster at 40 °C than at 20 °C.</div><div class="q-actions"><button class="btn show-ms" data-show="Show the markscheme" data-hide="Hide the markscheme">💡 Show the markscheme</button></div><div class="answer"><span class="alab">Markscheme</span><ul class="ms"><li>At 40 °C, the particles have a higher average kinetic energy <strong>(1)</strong></li><li>They move faster → collisions between the H⁺ ions and the Mg atoms are more frequent <strong>(1)</strong></li><li>A greater proportion of particles have energy ≥ Eₐ <strong>(1)</strong></li><li>The proportion of successful collisions increases → the rate of reaction is higher <strong>(1)</strong></li></ul></div></div>
+<div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--kin)">Kinetics · E2</span><span class="exam-marks">[6 marks]</span></div><div class="q-text">A student studies the reaction between calcium carbonate and hydrochloric acid by measuring the volume of CO₂ released over time.<br>(a) Describe how the rate of reaction changes over time and explain why. <strong>[3]</strong><br>(b) The experiment is repeated with more concentrated HCl (same volume, excess CaCO₃). Describe the shape of the new curve compared with the first: initial gradient and final volume of CO₂. Justify. <strong>[3]</strong></div><div class="q-actions"><button class="btn show-ms" data-show="Show the markscheme" data-hide="Hide the markscheme">💡 Show the markscheme</button></div><div class="answer"><span class="alab">Markscheme</span><ul class="ms"><li>(a) The rate is greatest at the start (steepest gradient) <strong>(1)</strong></li><li>(a) It decreases over time because the HCl concentration decreases → fewer collisions <strong>(1)</strong></li><li>(a) The curve becomes horizontal: the reaction is finished (limiting reactant used up) <strong>(1)</strong></li><li>(b) Steeper initial gradient: more H⁺ ions per unit volume → more frequent collisions <strong>(1)</strong></li><li>(b) The reaction finishes sooner <strong>(1)</strong></li><li>(b) Larger final volume of CO₂ because more moles of HCl have reacted (HCl limiting) <strong>(1)</strong></li></ul></div></div>
+<div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--redox)">Redox · E1</span><span class="exam-marks">[4 marks]</span></div><div class="q-text">A zinc strip is placed in a solution of silver nitrate (AgNO₃). Describe what is observed and explain the reaction using the activity series and half-equations.</div><div class="q-actions"><button class="btn show-ms" data-show="Show the markscheme" data-hide="Hide the markscheme">💡 Show the markscheme</button></div><div class="answer"><span class="alab">Markscheme</span><ul class="ms"><li>Observation: a grey/silvery deposit forms on the zinc strip (metallic silver) <strong>(1)</strong></li><li>Zn is more reactive than Ag → Zn displaces Ag⁺ from its salt solution <strong>(1)</strong></li><li>Oxidation: Zn → Zn²⁺ + 2e⁻ <strong>(1)</strong></li><li>Reduction: 2 Ag⁺ + 2e⁻ → 2 Ag <strong>(1)</strong></li></ul></div></div>
+<div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--redox)">Redox · E2</span><span class="exam-marks">[5 marks]</span></div><div class="q-text">A voltaic cell is built with a magnesium electrode and a copper electrode connected by a salt bridge.<br>(a) Identify the anode and the cathode. <strong>[1]</strong><br>(b) Write the two half-equations. <strong>[2]</strong><br>(c) State the direction of electron flow. <strong>[1]</strong><br>(d) Predict whether the voltage will be higher or lower than a Zn/Cu cell. Justify. <strong>[1]</strong></div><div class="q-actions"><button class="btn show-ms" data-show="Show the markscheme" data-hide="Hide the markscheme">💡 Show the markscheme</button></div><div class="answer"><span class="alab">Markscheme</span><ul class="ms"><li>(a) Anode (−): Mg (the more reactive); Cathode (+): Cu <strong>(1)</strong></li><li>(b) Mg → Mg²⁺ + 2e⁻ <strong>(1)</strong></li><li>(b) Cu²⁺ + 2e⁻ → Cu <strong>(1)</strong></li><li>(c) The electrons flow from the anode (Mg) to the cathode (Cu) through the external circuit <strong>(1)</strong></li><li>(d) Higher voltage: the Mg/Cu reactivity difference is greater than Zn/Cu (≈ 2.7 V vs 1.1 V) <strong>(1)</strong></li></ul></div></div>
+<div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--acid)">Acids & bases · E1</span><span class="exam-marks">[4 marks]</span></div><div class="q-text">At equal concentration (0.1 mol/L), ethanoic acid reacts more slowly with magnesium than hydrochloric acid. Explain why, using the ideas of strong/weak acids and collision theory.</div><div class="q-actions"><button class="btn show-ms" data-show="Show the markscheme" data-hide="Hide the markscheme">💡 Show the markscheme</button></div><div class="answer"><span class="alab">Markscheme</span><ul class="ms"><li>Ethanoic acid is a weak acid: it dissociates partially into ions <strong>(1)</strong></li><li>HCl is a strong acid: complete dissociation → higher [H⁺] <strong>(1)</strong></li><li>With ethanoic acid, the H⁺ concentration is lower → less frequent H⁺/Mg collisions <strong>(1)</strong></li><li>Lower frequency of successful collisions → slower rate of reaction <strong>(1)</strong></li></ul></div></div>
+<div class="q-card"><div class="q-top"><span class="q-num" style="background:var(--acid)">Acids & bases · E2</span><span class="exam-marks">[6 marks]</span></div><div class="q-text">A student titrates 25.0 cm³ of an HCl solution of unknown concentration with 0.150 mol/L NaOH. The equivalence point is reached after adding 22.0 cm³ of NaOH.<br>(a) Write the balanced equation for the reaction. <strong>[1]</strong><br>(b) Calculate the number of moles of NaOH added. <strong>[1]</strong><br>(c) Deduce the number of moles of HCl. <strong>[1]</strong><br>(d) Calculate the concentration of the HCl. <strong>[2]</strong><br>(e) Name a suitable indicator and the colour change observed at the equivalence point. <strong>[1]</strong></div><div class="q-actions"><button class="btn show-ms" data-show="Show the markscheme" data-hide="Hide the markscheme">💡 Show the markscheme</button></div><div class="answer"><span class="alab">Markscheme</span><ul class="ms"><li>(a) HCl + NaOH → NaCl + H₂O <strong>(1)</strong></li><li>(b) n(NaOH) = 0.150 × 0.0220 = 3.30 × 10⁻³ mol <strong>(1)</strong></li><li>(c) 1:1 reaction → n(HCl) = 3.30 × 10⁻³ mol <strong>(1)</strong></li><li>(d) C = n ÷ V = 3.30 × 10⁻³ ÷ 0.0250 <strong>(1)</strong> = <strong>0.132 mol/L</strong> <strong>(1)</strong></li><li>(e) E.g. phenolphthalein: colourless → pink (adding base to acid); any indicator with a sharp colour change accepted <strong>(1)</strong></li></ul></div></div>
+</section>
+
+</main>
+<footer class="footer"><div class="ph-mini"></div><p>Chemistry Year 10 · Chemical kinetics — Redox — Acids and bases · <a href="index.html" style="color:var(--ink-soft)">Home</a> · <a href="revision.html" style="color:var(--ink-soft)">Revision &amp; scores</a></p></footer>
+<script src="../app.js"></script>
+<script>
+/* == FLASHCARDS ===================== */
+(function(){
+  const CARDS=[
+    {cat:'Kinetics',c:'var(--kin)',t:'Rate of reaction',d:'The change in the amount of a reactant or product per unit of time. On an amount/time graph, it is the gradient of the tangent.'},
+    {cat:'Kinetics',c:'var(--kin)',t:'Collision theory',d:'For a reaction to occur, the particles must collide with sufficient energy AND with the correct orientation.'},
+    {cat:'Kinetics',c:'var(--kin)',t:'Activation energy (Eₐ)',d:'The minimum energy the particles must have for a collision to lead to a chemical reaction.'},
+    {cat:'Kinetics',c:'var(--kin)',t:'Catalyst',d:'A substance that increases the rate of a reaction by lowering the activation energy. It is not used up during the reaction.'},
+    {cat:'Redox',c:'var(--redox)',t:'Oxidation',d:'Loss of electrons (the species is oxidised). OIL: Oxidation Is Loss.'},
+    {cat:'Redox',c:'var(--redox)',t:'Reduction',d:'Gain of electrons (the species is reduced). RIG: Reduction Is Gain.'},
+    {cat:'Redox',c:'var(--redox)',t:'Activity series',d:'Ranking of metals from most reactive to least reactive: K > Na > Ca > Mg > Al > Zn > Fe > Pb > (H) > Cu > Ag > Au.'},
+    {cat:'Redox',c:'var(--redox)',t:'Salt bridge',d:'A tube containing an electrolyte solution (e.g. KNO₃) that allows ions to pass between the two half-cells to maintain electrical neutrality.'},
+    {cat:'Redox',c:'var(--redox)',t:'q = mCΔT',d:'Heat released: mass of the solution (g) × specific heat capacity of water (4.18 J·g⁻¹·°C⁻¹) × temperature change (°C).'},
+    {cat:'Acids & bases',c:'var(--acid)',t:'Brønsted-Lowry acid',d:'A chemical species able to donate a proton (H⁺) to another species.'},
+    {cat:'Acids & bases',c:'var(--acid)',t:'Brønsted-Lowry base',d:'A chemical species able to accept a proton (H⁺).'},
+    {cat:'Acids & bases',c:'var(--acid)',t:'Strong vs weak acid',d:'Strong: dissociates completely into ions in water (HCl, H₂SO₄, HNO₃). Weak: dissociates partially (CH₃COOH).'},
+    {cat:'Acids & bases',c:'var(--acid)',t:'Neutralisation',d:'The reaction between an acid and a base producing a salt and water. At the equivalence point: n(acid) = n(base) according to the stoichiometry.'},
+    {cat:'Acids & bases',c:'var(--acid)',t:'pH and [H⁺]',d:'The pH decreases by one unit for every tenfold increase in H⁺ concentration. pH < 7 acidic, pH = 7 neutral, pH > 7 basic.'},
+    {cat:'Acids & bases',c:'var(--acid)',t:'ΔH of neutralisation',d:'ΔH = −q ÷ n (kJ/mol), where n = moles of the limiting reactant. Reference for strong acid + strong base: ≈ −57 kJ/mol.'}
+  ];
+  let order=CARDS.map((_,i)=>i),pos=0;
+  const card=document.getElementById('fcCard');
+  function show(){
+    const c=CARDS[order[pos]];
+    card.classList.remove('flipped');
+    setTimeout(()=>{
+      document.getElementById('fcCat').textContent=c.cat;
+      document.getElementById('fcCat').style.background=c.c;
+      document.getElementById('fcTerm').textContent=c.t;
+      document.getElementById('fcDef').textContent=c.d;
+      document.getElementById('fcCount').textContent=(pos+1)+' / '+CARDS.length;
+    },card.classList.contains('flipped')?250:0);
+  }
+  card.addEventListener('click',()=>card.classList.toggle('flipped'));
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();card.classList.toggle('flipped');}});
+  document.getElementById('fcNext').addEventListener('click',()=>{pos=(pos+1)%CARDS.length;show();});
+  document.getElementById('fcPrev').addEventListener('click',()=>{pos=(pos-1+CARDS.length)%CARDS.length;show();});
+  document.getElementById('fcShuffle').addEventListener('click',()=>{
+    for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+    pos=0;show();
+  });
+  show();
+})();
+
+
+const Q=[
+  {s:'kin',lv:1,n:1,q:`Give <strong>two</strong> methods of measuring the rate of a reaction that produces a gas.`,
+   a:`Volume of gas produced / change in mass (any other valid example from the table accepted).`},
+  {s:'kin',lv:1,n:2,q:`Complete the sentence: "For a collision to be successful, the particles must have an energy greater than or equal to ________ and the correct ________."`,
+   a:`Activation energy (Eₐ); correct orientation.`},
+  {s:'kin',lv:1,n:3,q:`Explain in one sentence why increasing the temperature increases the rate of reaction.`,
+   a:`The particles have more kinetic energy, so they move faster and collide more frequently and with more energy.`},
+  {s:'kin',lv:1,n:4,q:`What is a catalyst? Is it used up during the reaction?`,
+   a:`A catalyst is a substance that increases the rate of reaction by lowering the activation energy. It is <strong>not</strong> used up.`},
+  {s:'kin',lv:1,n:5,q:`On a graph of amount of product against time, what does a steeper gradient indicate?`,
+   a:`A faster reaction (the amount of product increases faster per unit of time).`},
+  {s:'kin',lv:2,n:6,q:`A reaction between marble chips (CaCO₃) and HCl is compared with the same reaction using powdered marble. Using collision theory, explain why the reaction with the powder is faster.`,
+   a:`Powdered marble has a much greater surface area than marble chips. Only the particles at the surface can collide with the H⁺ ions. A greater surface area exposes more CaCO₃ particles, which increases the frequency of successful collisions and therefore the rate of reaction.`},
+  {s:'kin',lv:2,n:7,q:`The table below shows the mass of a system (acid + calcium carbonate) over time. Calculate the average rate between 0 and 60 seconds, and between 60 and 120 seconds. What do you notice?
+   <table><tr><th>Time (s)</th><th>Mass (g)</th></tr><tr><td>0</td><td>152.0</td></tr><tr><td>60</td><td>150.2</td></tr><tr><td>120</td><td>149.1</td></tr><tr><td>180</td><td>148.6</td></tr><tr><td>240</td><td>148.4</td></tr></table>`,
+   a:`Average rate 0–60 s: (152.0 − 150.2) ÷ 60 = <strong>0.030 g/s</strong><br>Average rate 60–120 s: (150.2 − 149.1) ÷ 60 = <strong>0.018 g/s</strong><br>The rate <strong>decreases</strong> over time because the concentration of HCl decreases.`},
+  {s:'kin',lv:2,n:8,q:`Draw an energy diagram for an <strong>exothermic</strong> reaction with and without a catalyst. Label the reactants, the products, Eₐ (with and without catalyst) and the enthalpy change ΔH.`,
+   a:`Correct diagram with: reactants at a higher level than products (exothermic); peak representing Eₐ without catalyst; lower peak representing Eₐ with catalyst; negative ΔH clearly indicated. Reactant and product levels unchanged with/without catalyst. <em>(Compare with the interactive diagram in section 1.4!)</em>`},
+  {s:'kin',lv:3,n:9,q:`A chemist studies the decomposition of hydrogen peroxide (H₂O₂) into water and oxygen. They observe that adding manganese dioxide (MnO₂) speeds up the reaction considerably. At the end of the experiment, the mass of MnO₂ is unchanged.<br>(a) What is the role of MnO₂ in this reaction? Justify with two arguments.<br>(b) Using collision theory and energy diagrams, explain why the rate is increased.<br>(c) If the experiment is repeated at 50 °C instead of 20 °C, what happens? Explain two distinct effects on the collisions.`,
+   a:`<strong>(a)</strong> MnO₂ is a catalyst because: (1) the reaction is faster in its presence; (2) its mass is unchanged at the end of the reaction — it is not used up.<br><strong>(b)</strong> The catalyst lowers the Eₐ of the decomposition of H₂O₂. On the energy diagram, the peak is lower with MnO₂. A greater proportion of H₂O₂ molecules now have energy ≥ Eₐ → a greater proportion of successful collisions → faster reaction.<br><strong>(c)</strong> At 50 °C: (1) the molecules have more kinetic energy → more frequent collisions; (2) a greater fraction of the molecules exceed Eₐ → a greater proportion of successful collisions. Both effects increase the rate.`},
+  {s:'kin',lv:3,n:10,q:`Two students are debating: one claims that doubling the concentration of a reactant always doubles the rate of reaction. The other says this is not necessarily true. Who is right? Justify your answer using collision theory.`,
+   a:`Both students are partly right. In simple collision theory, doubling the concentration approximately doubles the frequency of collisions, which <strong>can</strong> double the rate. However, in practice, the relationship between concentration and rate (the rate law) depends on the mechanism of the reaction, which can be more complex. For the purposes of this course, increasing the concentration increases collision frequency and therefore the rate, but the exact relationship is not always linear.`},
+  {s:'redox',lv:1,n:1,q:`Define oxidation and reduction in terms of electron transfer.`,
+   a:`Oxidation = loss of electrons; Reduction = gain of electrons.`},
+  {s:'redox',lv:1,n:2,q:`Rank the following metals from most reactive to least reactive: Cu, Mg, Fe, Na, Zn.`,
+   a:`Na &gt; Mg &gt; Zn &gt; Fe &gt; Cu`},
+  {s:'redox',lv:1,n:3,q:`Does magnesium react with cold water? And with hydrochloric acid? Justify.`,
+   a:`Mg does not react with cold water (very slow reaction) but reacts vigorously with HCl (more reactive than hydrogen in the series).`},
+  {s:'redox',lv:1,n:4,q:`In the half-equation: Al → Al³⁺ + 3e⁻, is aluminium oxidised or reduced?`,
+   a:`Oxidised (it loses 3 electrons).`},
+  {s:'redox',lv:1,n:5,q:`What is a salt bridge in a voltaic cell? What is its role?`,
+   a:`The salt bridge is a tube containing an electrolyte solution (e.g. KNO₃). It allows ions to pass between the two half-cells to maintain electrical neutrality and complete the circuit.`},
+  {s:'redox',lv:2,n:6,q:`A copper strip is placed in a solution of silver nitrate (AgNO₃). Do we predict a reaction? If so, write the overall equation and the half-equations. Justify your answer using the activity series.`,
+   a:`Yes, a reaction occurs: Cu is more reactive than Ag, so Cu can displace Ag⁺.
+   <div class="eq">Cu(s) + 2 AgNO₃(aq) → Cu(NO₃)₂(aq) + 2 Ag(s)</div>
+   <div class="eq">Cu → Cu²⁺ + 2e⁻</div><div class="eq">2 Ag⁺ + 2e⁻ → 2 Ag</div>`},
+  {s:'redox',lv:2,n:7,q:`In an experiment, 100 cm³ of 1 mol/L copper(II) sulfate solution is mixed with an excess of magnesium powder. The initial temperature is 20.0 °C.<br>(a) Predict whether a reaction occurs. Justify.<br>(b) If ΔT = 22.6 °C, calculate the heat released. (density ≈ 1 g/cm³)<br>(c) Compare this result qualitatively with the same experiment using zinc. Explain.`,
+   a:`<strong>(a)</strong> Yes, Mg is more reactive than Cu → Mg displaces Cu²⁺.<br><strong>(b)</strong> m = 100 g, ΔT = 22.6 °C → q = 100 × 4.18 × 22.6 = <strong>9446.8 J ≈ 9.45 kJ</strong><br><strong>(c)</strong> The heat released with Mg will be greater than with Zn, because the difference in reactivity between Mg and Cu is larger → a more exothermic reaction.`},
+  {s:'redox',lv:2,n:8,q:`Explain how the voltage of a voltaic cell can be used to deduce the reactivity order of three unknown metals A, B, C from experimental measurements.`,
+   a:`Build cells A/B, A/C and B/C. The metal that consistently forms the anode (positive voltage) is the most reactive. By comparing the voltages: a higher voltage for A/C than A/B suggests that the A/C reactivity difference &gt; A/B, so C is less reactive than B. The order A &gt; B &gt; C (or according to the data) can then be established.`},
+  {s:'redox',lv:3,n:9,q:`The extraction of aluminium (Al) and iron (Fe) from their ores is compared.<br>(a) Explain why aluminium is extracted by electrolysis and not by reduction with carbon.<br>(b) Write a half-equation for the reduction of the Fe³⁺ ion to Fe.<br>(c) The extraction of aluminium uses far more energy than that of iron. Suggest one chemical and one economic explanation.`,
+   a:`<strong>(a)</strong> Aluminium is more reactive than carbon → it cannot be reduced by carbon. Electrolysis supplies electrons directly to reduce Al³⁺.<br><strong>(b)</strong> <span class="eq inlineblock">Fe³⁺ + 3e⁻ → Fe</span><br><strong>(c)</strong> Chemical explanation: Al³⁺ holds its electrons very strongly and requires a lot of energy to be reduced. Economic explanation: electrolysis requires enormous amounts of electricity, which makes production expensive. In contrast, the reduction of iron by coke in a blast furnace is thermally accessible.`},
+  {s:'redox',lv:3,n:10,q:`A student builds three cells: Mg/Zn (2.0 V), Mg/Fe (1.9 V) and Zn/Fe (0.3 V).<br>(a) Are these data consistent with the activity series? Explain.<br>(b) Identify the anode and the cathode in the Zn/Fe cell.<br>(c) If the zinc sulfate solution were replaced with a more concentrated one, what effect would you expect on the voltage and why?`,
+   a:`<strong>(a)</strong> Yes, consistent: Mg &gt; Zn &gt; Fe in the series. The Mg/Zn cell (2.0 V) &gt; Mg/Fe (1.9 V) — the higher Mg/Zn voltage suggests Zn is slightly less reactive than Fe, which matches. The Zn/Fe cell (0.3 V) is the weakest because Zn and Fe are close in the series.<br><strong>(b)</strong> Anode (−): Zn (more reactive, oxidised); Cathode (+): Fe (reduced).<br><strong>(c)</strong> A higher concentration of Zn²⁺ ions tends to disfavour the oxidation of zinc (Le Chatelier's principle), which could slightly reduce the voltage. In practice, the effect is generally small for small changes in concentration.`},
+  {s:'acid',lv:1,n:1,q:`Define an acid and a base according to Brønsted-Lowry.`,
+   a:`Acid: donates a proton (H⁺); Base: accepts a proton (H⁺).`},
+  {s:'acid',lv:1,n:2,q:`Give <strong>two</strong> examples of alkalis and <strong>two</strong> examples of insoluble bases.`,
+   a:`Alkalis: NaOH, Ca(OH)₂ (or KOH, NH₃); Insoluble bases: CaCO₃, ZnO (or Fe₂O₃, CuO).`},
+  {s:'acid',lv:1,n:3,q:`What gas is produced when an acid reacts with a metal? And with a carbonate?`,
+   a:`Acid + metal → H₂ (hydrogen); Acid + carbonate → CO₂.`},
+  {s:'acid',lv:1,n:4,q:`What is the difference between a strong acid and a weak acid?`,
+   a:`A strong acid dissociates completely into ions in water; a weak acid dissociates partially.`},
+  {s:'acid',lv:1,n:5,q:`Which indicator is needed to measure pH values across the whole 0–14 scale? Why are other indicators unsuitable?`,
+   a:`Universal indicator — the other indicators (e.g. phenolphthalein, litmus) only change colour around one specific point and cannot distinguish the different pH values across the whole scale.`},
+  {s:'acid',lv:2,n:6,q:`Two solutions of ethanoic acid (weak) and hydrochloric acid (strong) both have a concentration of 0.1 mol/L.<br>(a) Which has the lower pH?<br>(b) Which conducts electricity better? Explain.<br>(c) Which reacts faster with calcium carbonate? Explain using collision theory.`,
+   a:`<strong>(a)</strong> Hydrochloric acid (strong) has the lower pH.<br><strong>(b)</strong> HCl conducts better because it is fully dissociated → more H⁺ and Cl⁻ ions in solution → more charge carriers.<br><strong>(c)</strong> HCl reacts faster with CaCO₃ because its H⁺ concentration is higher (complete dissociation) → greater collision frequency between H⁺ and CO₃²⁻.`},
+  {s:'acid',lv:2,n:7,q:`In a titration, 20.0 cm³ of H₂SO₄ of unknown concentration is neutralised by 32.0 cm³ of 0.200 mol/L NaOH. Calculate the concentration of the sulfuric acid. <em>(Watch the stoichiometry: H₂SO₄ + 2 NaOH → Na₂SO₄ + 2 H₂O)</em>`,
+   a:`n(NaOH) = 0.200 × 0.032 = 6.4 × 10⁻³ mol<br>Reaction: H₂SO₄ + 2 NaOH → Na₂SO₄ + 2 H₂O<br>n(H₂SO₄) = 6.4 × 10⁻³ ÷ 2 = 3.2 × 10⁻³ mol<br>C(H₂SO₄) = 3.2 × 10⁻³ ÷ 0.020 = <strong>0.160 mol/L</strong>`},
+  {s:'acid',lv:2,n:8,q:`100 cm³ of 0.5 mol/L HNO₃ is mixed with 100 cm³ of 0.5 mol/L KOH. The initial temperature is 19.5 °C and the final temperature is 23.2 °C. Calculate q and the molar enthalpy of neutralisation. Compare with the reference value of −57 kJ/mol and suggest an explanation for any difference.`,
+   a:`m = 200 g, ΔT = 3.7 °C<br>q = 200 × 4.18 × 3.7 = <strong>3093.2 J ≈ 3.09 kJ</strong><br>n(HNO₃) = 0.1 L × 0.5 mol/L = 0.05 mol<br>ΔH = −3.09 ÷ 0.05 = <strong>−61.8 kJ/mol</strong><br>Slightly different from −57 kJ/mol. Possible reasons: heat losses to the surroundings, simplified density assumption, heat capacity of the solution slightly different from pure water.`},
+  {s:'acid',lv:3,n:9,q:`Ethanoic acid (vinegar) and hydrochloric acid (stomach acid) play very different roles in everyday life. A chemist compares their properties at equal concentration (0.1 mol/L).<br>(a) Explain, at the molecular level, why ethanoic acid has a lower conductivity.<br>(b) If each solution is diluted by a factor of 10, predict and explain how the pH of each changes. Will the change be identical?<br>(c) A student claims that ethanoic acid is "less dangerous" than hydrochloric acid simply because it is weaker. Critically evaluate this claim.`,
+   a:`<strong>(a)</strong> Ethanoic acid (CH₃COOH) is weak: only a small fraction of the molecules dissociate into CH₃COO⁻ and H⁺ ions. Fewer ions in solution → fewer charge carriers → lower conductivity.<br><strong>(b)</strong> For HCl (strong): a ×10 dilution decreases [H⁺] by a factor of 10 → pH increases by about 1 unit. For CH₃COOH (weak): dilution causes more dissociation (equilibrium shifts) → the pH change is less predictable and less than one unit. The changes are <strong>not</strong> identical.<br><strong>(c)</strong> The claim is simplistic. A concentrated weak acid can be very corrosive. Chemical strength is only one factor among others: concentration, reactivity with biological tissue, volatility and the context of exposure all matter. Concentrated ethanoic acid (glacial acetic acid) is dangerous.`},
+  {s:'acid',lv:3,n:10,q:`A lab technician must prepare pure copper(II) sulfate salt (CuSO₄) from copper(II) oxide (CuO) and sulfuric acid (H₂SO₄).<br>(a) Write the balanced equation for this reaction.<br>(b) Explain why an <strong>excess</strong> of CuO (insoluble base) is used rather than an excess of acid.<br>(c) Describe the experimental procedure for isolating pure CuSO₄ crystals.<br>(d) If the technician instead used NaOH (soluble base) to neutralise H₂SO₄, what salt would be obtained? Why is this method less suitable for preparing a pure salt?`,
+   a:`<strong>(a)</strong> <span class="eq inlineblock">CuO + H₂SO₄ → CuSO₄ + H₂O</span><br><strong>(b)</strong> An excess of CuO (insoluble base) is used to make sure all the acid is used up. The excess CuO can simply be filtered off (it does not dissolve in water). With an excess of acid, H₂SO₄ would remain in the final solution and contaminate the salt.<br><strong>(c)</strong> Procedure: (1) add excess CuO to warm H₂SO₄; (2) filter off the excess CuO; (3) gently evaporate the solution to concentrate it; (4) leave to cool → crystallisation; (5) filter and dry the crystals.<br><strong>(d)</strong> Na₂SO₄ (sodium sulfate) would be obtained. This method is less suitable because NaOH is soluble: any excess base cannot be filtered off, and it is difficult to add exactly the stoichiometric amount without a precise titration.`}
+  ];
+(function(){
+  const SEC={kin:{name:'Kinetics',color:'var(--kin)'},redox:{name:'Redox',color:'var(--redox)'},acid:{name:'Acids & bases',color:'var(--acid)'}};
+  const LV_LABEL={1:'Level 1 · Recall',2:'Level 2 · Reasoning',3:'Level 3 · Analysis'};
+  const LV_COLOR={1:'#2F9E44',2:'#F9A03F',3:'#D7263D'};
+  const SHOW='💡 Show the answer',HIDE='🙈 Hide the answer';
+  const list=document.getElementById('qList');
+  let fsec='all',flv='all';
+  const mastered=new Set(Store.get('mastered',[]));
+  Q.forEach((it)=>{
+    const qid=it.s+'-'+it.n;
+    const card=document.createElement('div');card.className='q-card';
+    card.dataset.s=it.s;card.dataset.lv=it.lv;
+    card.innerHTML=`
+      <div class="q-top">
+        <span class="q-num" style="background:${SEC[it.s].color}">${SEC[it.s].name} · Q${it.n}</span>
+        <span class="pill" style="background:${LV_COLOR[it.lv]};align-self:center">${LV_LABEL[it.lv]}</span>
+      </div>
+      <div class="q-text">${it.q}</div>
+      <div class="q-actions">
+        <button class="btn show-a">${SHOW}</button>
+        <label class="mastered"><input type="checkbox" ${mastered.has(qid)?'checked':''}>Mastered</label>
+      </div>
+      <div class="answer"><span class="alab">Answer key</span>${it.a}</div>`;
+    const btn=card.querySelector('.show-a'),ans=card.querySelector('.answer');
+    btn.addEventListener('click',()=>{btn.textContent=ans.classList.toggle('show')?HIDE:SHOW;});
+    card.querySelector('input').addEventListener('change',e=>{
+      e.target.checked?mastered.add(qid):mastered.delete(qid);
+      Store.set('mastered',[...mastered]);updateProgress();renderDash('dash');
+    });
+    list.appendChild(card);
+  });
+  function updateProgress(){
+    const n=mastered.size;
+    document.getElementById('progCount').textContent=n;
+    document.getElementById('progFill').style.width=(n/Q.length*100)+'%';
+    document.getElementById('progMsg').textContent=n===Q.length?'— 🎉 Well done, everything mastered!':n>=20?'— excellent pace 💪':n>=10?'— good work, keep going!':'';
+  }
+  function applyFilters(){
+    [...list.children].forEach(c=>{
+      c.style.display=((fsec==='all'||c.dataset.s===fsec)&&(flv==='all'||c.dataset.lv===flv))?'':'none';});
+  }
+  document.querySelectorAll('[data-fsec]').forEach(b=>b.addEventListener('click',()=>{
+    fsec=b.dataset.fsec;document.querySelectorAll('[data-fsec]').forEach(x=>x.classList.toggle('on',x===b));applyFilters();}));
+  document.querySelectorAll('[data-flv]').forEach(b=>b.addEventListener('click',()=>{
+    flv=b.dataset.flv;document.querySelectorAll('[data-flv]').forEach(x=>x.classList.toggle('on',x===b));applyFilters();}));
+  updateProgress();
+  const p=new URLSearchParams(location.search);
+  if(p.get('lv')){const b=document.querySelector(`[data-flv="${p.get('lv')}"]`);if(b)b.click();}
+  if(p.get('sec')){const b=document.querySelector(`[data-fsec="${p.get('sec')}"]`);if(b)b.click();}
+})();
+document.querySelectorAll('.show-ms').forEach(b=>b.addEventListener('click',()=>{
+  const a=b.closest('.q-card').querySelector('.answer');
+  const on=a.classList.toggle('show');
+  b.textContent='💡 '+(on?b.dataset.hide:b.dataset.show);
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemical kinetics — Chemistry Year 10</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="page-hero"><div class="ph-bar"></div></header>
+<nav class="nav" aria-label="Navigation"><div class="nav-inner">
+<a class="tab-btn" href="index.html">🏠 Home</a>
+<a class="tab-btn" href="kinetics.html" style="--tab-color:var(--kin)" aria-current="page">1 · Kinetics</a>
+<a class="tab-btn" href="redox.html" style="--tab-color:var(--redox)">2 · Redox</a>
+<a class="tab-btn" href="acids.html" style="--tab-color:var(--acid)">3 · Acids &amp; bases</a>
+<a class="tab-btn" href="revision.html" style="--tab-color:var(--green)">🎯 Revision</a>
+<a class="lang-btn" href="../kinetics.html" title="Passer en français">🌐 FR</a>
+</div></nav>
+<main class="wrap">
+<section class="panel" id="panel-kin" style="--accent:var(--kin);--accent-soft:var(--kin-soft);--accent-deep:var(--kin-deep)">
+  <div class="section-head">
+    <span class="section-tag" style="background:var(--kin)">Section 1</span>
+    <h2>Chemical kinetics</h2>
+  </div>
+  <p class="section-intro">How fast does a reaction happen, and why? It all comes down to one simple idea: particles colliding.</p>
+<div class="card obj-card" data-chapter="kin"><span class="deftag" style="background:var(--kin);color:#fff">Learning objectives</span><h4>🎯 By the end of this section, you should be able to…</h4><p class="note">Tick them off as you go — your progress is saved on this device.</p><ul class="obj-list"><li><label><input type="checkbox"> <span>Define the rate of reaction and give several methods of measuring it</span></label></li><li><label><input type="checkbox"> <span>Interpret an amount/time graph and determine the rate from the gradient (tangent)</span></label></li><li><label><input type="checkbox"> <span>Explain collision theory and the idea of activation energy (Eₐ)</span></label></li><li><label><input type="checkbox"> <span>Describe the effect of concentration, surface area and temperature on the rate</span></label></li><li><label><input type="checkbox"> <span>Explain how a catalyst works and sketch its effect on an energy diagram</span></label></li><li><label><input type="checkbox"> <span>Calculate an average rate from experimental data</span></label></li></ul><div class="obj-progress"></div></div>
+
+
+  <h3 class="block-title"><span class="num" style="background:var(--kin)">1.1</span>Rate of reaction</h3>
+  <div class="card">
+    <p>The <strong>rate of reaction</strong> measures how quickly a chemical reaction takes place. It can be defined as the change in the amount of a reactant or product per unit of time.</p>
+    <div class="eq">Rate&nbsp;=&nbsp;change in amount&nbsp;÷&nbsp;time</div>
+    <h4>What can be measured</h4>
+    <table>
+      <tr><th>Measurement method</th><th>Applicable when…</th></tr>
+      <tr><td>Volume of gas released</td><td>A gas is produced (e.g. CO₂, H₂)</td></tr>
+      <tr><td>Change in mass</td><td>A gas escapes from the system</td></tr>
+      <tr><td>Electrical conductivity</td><td>Ions appear or disappear</td></tr>
+      <tr><td>Colour intensity</td><td>A reactant or product is coloured</td></tr>
+      <tr><td>Opacity (turbidity)</td><td>A precipitate forms (e.g. sulfur)</td></tr>
+    </table>
+  </div>
+
+  <div class="widget">
+    <h4>📈 Graph explorer — CaCO₃ + HCl</h4>
+    <p class="hint">Move the cursor along the curve: the <strong style="color:#F9A03F">tangent</strong> gives the instantaneous rate. Watch how the gradient decreases over time.</p>
+    <div class="controls">
+      <div class="control" style="flex:2">
+        <label for="rateTime">Time t = <span id="rateTimeVal" class="readout">60</span> s</label>
+        <input type="range" id="rateTime" min="5" max="175" value="60" step="1">
+      </div>
+    </div>
+    <svg id="rateGraph" viewBox="0 0 640 320" width="100%" role="img" aria-label="Graph of CO2 volume against time with interactive tangent"></svg>
+    <div class="stat-row">
+      <div class="stat"><div class="lab">Instantaneous rate</div><div class="val"><span id="rateSlope">0.42</span> cm³/s</div></div>
+      <div class="stat"><div class="lab">Volume of CO₂ at t</div><div class="val"><span id="rateVol">30</span> cm³</div></div>
+      <div class="stat"><div class="lab">Reaction status</div><div class="val" style="font-size:16px;padding-top:5px" id="rateState">In progress</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>Reading graphs — the essentials</h4>
+    <p>On an amount/time graph: the <strong>gradient</strong> (tangent to the curve) gives the rate at a given moment. A <strong>steep</strong> gradient = a fast reaction. The gradient <strong>decreases</strong> over time because the reactants are used up, and the curve <strong>levels off</strong> when the reaction is finished.</p>
+  </div>
+
+  <h3 class="block-title"><span class="num" style="background:var(--kin)">1.2</span>Collision theory</h3>
+  <div class="grid-2">
+    <div class="card definition">
+      <span class="deftag" style="background:var(--kin);color:#fff">Key definition</span>
+      <p><strong>Collision theory:</strong> for a reaction to occur, the reacting particles must collide with sufficient energy <strong>AND</strong> with the correct orientation.</p>
+    </div>
+    <div class="card definition">
+      <span class="deftag" style="background:var(--kin);color:#fff">Key definition</span>
+      <p><strong>Activation energy (Eₐ):</strong> the minimum energy the particles must have for a collision to lead to a chemical reaction.</p>
+    </div>
+  </div>
+  <div class="card">
+    <h4>Two conditions for a successful collision</h4>
+    <p>1. Energy ≥ Eₐ &nbsp;&nbsp;·&nbsp;&nbsp; 2. Correct orientation of the molecules at the moment of collision</p>
+  </div>
+
+  <div class="widget">
+    <h4>🧪 Collision simulator</h4>
+    <p class="hint">Change the <strong>temperature</strong>, the <strong>concentration</strong> and add a <strong>catalyst</strong>: count the successful collisions (<span style="color:#7CF29C">green</span> flashes). Particles that are too slow bounce off without reacting.</p>
+    <div class="controls">
+      <div class="control">
+        <label for="simTemp">Temperature: <span id="simTempVal" class="readout">25</span> °C</label>
+        <input type="range" id="simTemp" min="5" max="95" value="25">
+      </div>
+      <div class="control">
+        <label for="simConc">Concentration: <span id="simConcVal" class="readout">20</span> particles</label>
+        <input type="range" id="simConc" min="8" max="46" value="20" step="2">
+      </div>
+      <div class="control" style="flex:0 0 auto;display:flex;align-items:flex-end">
+        <button class="btn dark" id="simCat" aria-pressed="false">⚗ Catalyst: OFF</button>
+      </div>
+    </div>
+    <canvas id="simCanvas" class="sim-canvas" aria-label="Simulation of colliding particles"></canvas>
+    <div class="stat-row">
+      <div class="stat"><div class="lab">Successful collisions (total)</div><div class="val" id="simHits">0</div></div>
+      <div class="stat"><div class="lab">Activation energy</div><div class="val" id="simEa">High</div></div>
+      <div class="stat" style="flex:0 0 auto;display:flex;align-items:center"><button class="btn dark" id="simReset">↺ Reset counter</button></div>
+    </div>
+  </div>
+
+  <h3 class="block-title"><span class="num" style="background:var(--kin)">1.3</span>Factors affecting the rate</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4>🔹 Concentration</h4>
+      <p>Increasing the concentration of a reactant in solution means there are <strong>more particles in the same volume</strong>. The particles are closer together, which increases the <strong>frequency of collisions</strong>. More collisions per unit of time <span class="arrow">→</span> higher rate.</p>
+    </div>
+    <div class="card">
+      <h4>🔹 Surface area (solids)</h4>
+      <p>Only the particles at the <strong>surface</strong> of a solid can collide with the particles in solution. By dividing a solid into smaller pieces (or a powder), you <strong>increase the total exposed surface area</strong>: more particles can react at the same time.</p>
+      <p class="note">Example: a crushed effervescent tablet reacts much faster with water than a whole tablet.</p>
+    </div>
+    <div class="card">
+      <h4>🔹 Temperature</h4>
+      <p>Increasing the temperature increases the <strong>average kinetic energy</strong> of the particles. The effect is twofold: the particles move faster <span class="arrow">→</span> <strong>more frequent collisions</strong>; and a greater proportion of particles have energy ≥ Eₐ <span class="arrow">→</span> <strong>collisions are successful more often</strong>.</p>
+    </div>
+    <div class="card">
+      <h4>🔹 Catalyst</h4>
+      <p>A <strong>catalyst</strong> increases the rate of a reaction <strong>without being used up</strong>. It works by <strong>lowering the activation energy</strong>, which allows a greater proportion of particles to have enough energy to react.</p>
+      <p class="note">Real example: copper catalyses the zinc + acid reaction by improving electron transfer between the zinc and the H⁺ ions.</p>
+    </div>
+  </div>
+
+  <h3 class="block-title"><span class="num" style="background:var(--kin)">1.4</span>Energy diagram &amp; catalyst</h3>
+  <div class="widget">
+    <h4>⛰ Interactive energy diagram</h4>
+    <p class="hint">Switch the catalyst on: only the <strong>peak (Eₐ)</strong> is lowered. The reactants and products stay at the same energy level — ΔH does not change.</p>
+    <div class="controls">
+      <button class="btn dark" id="energyCat" aria-pressed="false">⚗ Add a catalyst</button>
+    </div>
+    <svg id="energyDiagram" viewBox="0 0 640 330" width="100%" role="img" aria-label="Energy diagram of an exothermic reaction with and without a catalyst"></svg>
+  </div>
+
+  <h3 class="block-title"><span class="num" style="background:var(--kin)">⬡</span>Particle diagrams to know</h3>
+<div class="grid-2">
+<figure class="fig"><svg viewBox="0 0 460 200" role="img" aria-label="Diagramme de particules : solution diluee contre concentree">
+<rect x="15" y="20" width="195" height="140" rx="10" fill="#EAF2F7" stroke="#9DB6C4" stroke-width="1.5"/>
+<rect x="250" y="20" width="195" height="140" rx="10" fill="#DCEAF3" stroke="#9DB6C4" stroke-width="1.5"/>
+<g fill="#E8590C"><circle cx="60" cy="60" r="8"/><circle cx="140" cy="50" r="8"/><circle cx="90" cy="110" r="8"/><circle cx="170" cy="125" r="8"/><circle cx="50" cy="140" r="8"/></g>
+<g fill="#E8590C"><circle cx="285" cy="50" r="8"/><circle cx="330" cy="40" r="8"/><circle cx="380" cy="58" r="8"/><circle cx="420" cy="45" r="8"/><circle cx="300" cy="92" r="8"/><circle cx="350" cy="80" r="8"/><circle cx="400" cy="95" r="8"/><circle cx="275" cy="130" r="8"/><circle cx="320" cy="120" r="8"/><circle cx="370" cy="135" r="8"/><circle cx="415" cy="125" r="8"/><circle cx="345" cy="150" r="8"/></g>
+<text x="112" y="185" text-anchor="middle" font-size="13" fill="#54656F">0.5 mol/L — dilute</text>
+<text x="347" y="185" text-anchor="middle" font-size="13" fill="#54656F">2 mol/L — concentrated</text>
+</svg><figcaption>Same volume, more particles → collisions are more frequent → the reaction is faster.</figcaption></figure>
+<figure class="fig"><svg viewBox="0 0 460 200" role="img" aria-label="Surface area : bloc contre poudre">
+<rect x="55" y="45" width="100" height="100" rx="4" fill="#D8D3C8" stroke="#E8590C" stroke-width="3"/>
+<g stroke="#E8590C" stroke-width="2.5" fill="#D8D3C8">
+<rect x="270" y="45" width="28" height="28" rx="3"/><rect x="306" y="45" width="28" height="28" rx="3"/><rect x="342" y="45" width="28" height="28" rx="3"/>
+<rect x="270" y="81" width="28" height="28" rx="3"/><rect x="306" y="81" width="28" height="28" rx="3"/><rect x="342" y="81" width="28" height="28" rx="3"/>
+<rect x="270" y="117" width="28" height="28" rx="3"/><rect x="306" y="117" width="28" height="28" rx="3"/><rect x="342" y="117" width="28" height="28" rx="3"/></g>
+<text x="105" y="175" text-anchor="middle" font-size="13" fill="#54656F">Block — limited surface</text>
+<text x="320" y="175" text-anchor="middle" font-size="13" fill="#54656F">Powder — much greater surface</text>
+<text x="212" y="100" text-anchor="middle" font-size="22" fill="#E8590C">→</text>
+</svg><figcaption>Same mass of solid: divided into small pieces, more particles are exposed ( <span style="color:var(--kin);font-weight:700">orange</span> outline) and can react.</figcaption></figure>
+</div>
+<h3 class="block-title"><span class="num" style="background:var(--kin)">1.5</span>Worked examples</h3>
+  <details class="ex">
+    <summary><span class="pill" style="background:var(--kin)">Example 1</span>Reading a graph — when is the reaction fastest?<span class="chev">▾</span></summary>
+    <div class="ex-body">
+      <p>Calcium carbonate (CaCO₃) reacts with hydrochloric acid (HCl). The volume of CO₂ is measured every 30 seconds:</p>
+      <table style="max-width:340px">
+        <tr><th>Time (s)</th><th>Volume CO₂ (cm³)</th></tr>
+        <tr><td>0</td><td>0</td></tr><tr><td>30</td><td>18</td></tr><tr><td>60</td><td>32</td></tr>
+        <tr><td>90</td><td>42</td></tr><tr><td>120</td><td>48</td></tr><tr><td>150</td><td>50</td></tr><tr><td>180</td><td>50</td></tr>
+      </table>
+      <p><strong>Question:</strong> when is the reaction fastest? Justify your answer.</p>
+      <div class="answer show"><span class="alab">Answer</span>The reaction is fastest at the start (between 0 and 30 s) because that is where the change in volume is greatest: 18 cm³ in 30 s, i.e. an average rate of 18/30 = <strong>0.6 cm³/s</strong>. The rate then decreases because the concentration of HCl decreases.</div>
+    </div>
+  </details>
+  <details class="ex">
+    <summary><span class="pill" style="background:var(--kin)">Example 2</span>Effect of concentration — 2 mol/L vs 0.5 mol/L HCl<span class="chev">▾</span></summary>
+    <div class="ex-body">
+      <p><strong>Question:</strong> using collision theory, explain why a 2 mol/L solution of HCl reacts faster with zinc than a 0.5 mol/L solution.</p>
+      <div class="answer show"><span class="alab">Answer</span>In the 2 mol/L solution there are more H⁺ ions per litre of solution. The particle density is higher, which increases the frequency of collisions between the H⁺ ions and the zinc atoms. More collisions per unit of time means a higher rate of reaction.</div>
+    </div>
+  </details>
+  <details class="ex">
+    <summary><span class="pill" style="background:var(--kin)">Example 3</span>Catalyst and energy diagram<span class="chev">▾</span></summary>
+    <div class="ex-body">
+      <p><strong>Question:</strong> on an energy diagram, sketch the effect of a catalyst and explain how it increases the rate of reaction.</p>
+      <div class="answer show"><span class="alab">Answer</span>The catalyst lowers the activation energy (Eₐ). On the diagram, the peak is lower with the catalyst. Therefore a greater fraction of the particles have enough energy to react on collision, which increases the proportion of successful collisions and hence the overall rate of the reaction.</div>
+    </div>
+  </details>
+  <p class="note" style="margin-top:14px">➜ The 10 practice questions for this section are on the <a href="revision.html" style="color:var(--accent-deep)"><strong>Revision</strong></a> page.</p>
+<h3 class="block-title"><span class="num" style="background:var(--kin)">⚡</span>Quick quiz — automatic scoring</h3><p class="note" style="margin-bottom:16px">Instant feedback. Score 5/6 or more to earn the 🥇 badge — your best score is saved on this device and counts towards your progress (Revision page).</p><div id="quiz"></div>
+<script>
+const QUIZ_DATA=[
+{q:"On a graph of amount of product against time, the gradient of the tangent gives…",o:["the activation energy","the rate of reaction at that instant","the concentration of the reactant","the enthalpy change ΔH"],c:1},
+{q:"For a collision to be successful, you need…",o:["energy ≥ Eₐ AND the correct orientation","only a high speed","necessarily a catalyst","a temperature above 100 °C"],c:0},
+{q:"A catalyst increases the rate of reaction by…",o:["increasing the temperature","increasing the concentration","lowering the activation energy","being used up instead of the reactant"],c:2},
+{q:"Why does the rate decrease during a reaction?",o:["The products slow the particles down","The concentration of the reactants decreases","The temperature increases","The activation energy increases"],c:1},
+{q:"Increasing the temperature makes collisions…",o:["more frequent only","more energetic only","more frequent AND more often successful","fewer but more successful"],c:2},
+{q:"Powdered marble reacts faster than marble chips because…",o:["the powder is more concentrated","the exposed surface area is greater","the powder contains more CaCO₃","the activation energy is lower"],c:1}];
+document.addEventListener('DOMContentLoaded',()=>renderQuiz(document.getElementById('quiz'),'kin',QUIZ_DATA));
+</script>
+</section>
+</main>
+<footer class="footer"><div class="ph-mini"></div><p>Chemistry Year 10 · Chemical kinetics — Redox — Acids and bases · <a href="index.html" style="color:var(--ink-soft)">Home</a> · <a href="revision.html" style="color:var(--ink-soft)">Revision &amp; scores</a></p></footer>
+<script>
+/* == RATE GRAPH (kinetics) ===================== */
+(function(){
+  const svg=document.getElementById('rateGraph');
+  const data=[[0,0],[30,18],[60,32],[90,42],[120,48],[150,50],[180,50]];
+  const W=640,H=320,m={l:58,r:18,t:18,b:44};
+  const X=t=>m.l+(t/180)*(W-m.l-m.r), Y=v=>H-m.b-(v/55)*(H-m.t-m.b);
+  // monotone interpolation (simple Catmull-Rom sampling)
+  function interp(t){
+    if(t<=0)return 0; if(t>=150)return 50;
+    let i=0;while(data[i+1][0]<t)i++;
+    const [t0,v0]=data[i],[t1,v1]=data[i+1];
+    const u=(t-t0)/(t1-t0);
+    // cubic hermite with finite-difference slopes
+    const s=(j)=>{ if(j<=0)return (data[1][1]-data[0][1])/(data[1][0]-data[0][0]);
+      if(j>=data.length-1)return (data[j][1]-data[j-1][1])/(data[j][0]-data[j-1][0]);
+      return ((data[j+1][1]-data[j-1][1])/(data[j+1][0]-data[j-1][0]));};
+    const m0=s(i)*(t1-t0),m1=s(i+1)*(t1-t0);
+    const u2=u*u,u3=u2*u;
+    return (2*u3-3*u2+1)*v0+(u3-2*u2+u)*m0+(-2*u3+3*u2)*v1+(u3-u2)*m1;
+  }
+  function slope(t){const h=.5;return (interp(t+h)-interp(t-h))/(2*h);}
+  // build static parts
+  let g='';
+  for(let v=0;v<=50;v+=10)g+=`<line x1="${m.l}" y1="${Y(v)}" x2="${W-m.r}" y2="${Y(v)}" stroke="rgba(255,255,255,.09)"/><text x="${m.l-10}" y="${Y(v)+4}" text-anchor="end" font-size="11" fill="#93ABA1">${v}</text>`;
+  for(let t=0;t<=180;t+=30)g+=`<line x1="${X(t)}" y1="${H-m.b}" x2="${X(t)}" y2="${m.t}" stroke="rgba(255,255,255,.05)"/><text x="${X(t)}" y="${H-m.b+18}" text-anchor="middle" font-size="11" fill="#93ABA1">${t}</text>`;
+  let path='M';
+  for(let t=0;t<=180;t+=2)path+=`${X(t).toFixed(1)},${Y(interp(t)).toFixed(1)} `;
+  let pts=data.map(([t,v])=>`<circle cx="${X(t)}" cy="${Y(v)}" r="4.5" fill="#0A171E" stroke="#7CF29C" stroke-width="2"/>`).join('');
+  svg.innerHTML=`${g}
+    <text x="${(m.l+W-m.r)/2}" y="${H-8}" text-anchor="middle" font-size="12" fill="#AFC6BC">Time (s)</text>
+    <text x="16" y="${(m.t+H-m.b)/2}" text-anchor="middle" font-size="12" fill="#AFC6BC" transform="rotate(-90 16 ${(m.t+H-m.b)/2})">Volume of CO₂ (cm³)</text>
+    <path d="${path}" fill="none" stroke="#7CF29C" stroke-width="2.5" stroke-linecap="round"/>
+    ${pts}
+    <line id="tanLine" stroke="#F9A03F" stroke-width="2.5" stroke-dasharray="6 5"/>
+    <circle id="tanPt" r="7" fill="#F9A03F" stroke="#0A171E" stroke-width="2.5"/>`;
+  const tanLine=svg.querySelector('#tanLine'),tanPt=svg.querySelector('#tanPt');
+  const slider=document.getElementById('rateTime');
+  function update(){
+    const t=+slider.value,v=interp(t),sl=slope(t);
+    document.getElementById('rateTimeVal').textContent=t;
+    document.getElementById('rateVol').textContent=v.toFixed(0);
+    document.getElementById('rateSlope').textContent=sl.toFixed(2);
+    document.getElementById('rateState').textContent=sl<0.02?'Finished ✓':(sl>0.35?'Fast 🔥':'In progress');
+    tanPt.setAttribute('cx',X(t));tanPt.setAttribute('cy',Y(v));
+    const dt=34; // half-span in seconds for the tangent segment
+    tanLine.setAttribute('x1',X(t-dt));tanLine.setAttribute('y1',Y(v-sl*dt));
+    tanLine.setAttribute('x2',X(t+dt));tanLine.setAttribute('y2',Y(v+sl*dt));
+  }
+  slider.addEventListener('input',update);update();
+})();
+
+
+/* == COLLISION SIMULATOR ===================== */
+(function(){
+  const cv=document.getElementById('simCanvas'),ctx=cv.getContext('2d');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let temp=25,count=20,cat=false,hits=0,flashes=[];
+  let parts=[];
+  const R=7;
+  function resize(){cv.width=cv.offsetWidth*devicePixelRatio;cv.height=240*devicePixelRatio;}
+  resize();addEventListener('resize',()=>{resize();spawn();});
+  function speedScale(){return (0.35+temp/55);}
+  function spawn(){
+    parts=[];
+    for(let i=0;i<count;i++){
+      const a=Math.random()*Math.PI*2,s=(0.6+Math.random()*0.8);
+      parts.push({x:Math.random()*cv.width,y:Math.random()*cv.height,
+        vx:Math.cos(a)*s,vy:Math.sin(a)*s,type:i%2,jit:Math.random()*100});
+    }
+  }
+  spawn();
+  function ea(){return cat?1.45:2.05;} // threshold on relative speed (scaled)
+  function frame(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    const sc=speedScale()*devicePixelRatio, rr=R*devicePixelRatio;
+    // move
+    parts.forEach(p=>{
+      p.x+=p.vx*sc*1.6;p.y+=p.vy*sc*1.6;
+      if(p.x<rr){p.x=rr;p.vx*=-1}if(p.x>cv.width-rr){p.x=cv.width-rr;p.vx*=-1}
+      if(p.y<rr){p.y=rr;p.vy*=-1}if(p.y>cv.height-rr){p.y=cv.height-rr;p.vy*=-1}
+    });
+    // collide pairs
+    for(let i=0;i<parts.length;i++)for(let j=i+1;j<parts.length;j++){
+      const a=parts[i],b=parts[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
+      if(d<rr*2&&d>0.001){
+        // elastic-ish swap along normal
+        const nx=dx/d,ny=dy/d;
+        const rvx=(b.vx-a.vx),rvy=(b.vy-a.vy);
+        const rel=Math.abs(rvx*nx+rvy*ny)*speedScale()*2.2;
+        const p=(rvx*nx+rvy*ny);
+        if(p<0){
+          a.vx+=p*nx;a.vy+=p*ny;b.vx-=p*nx;b.vy-=p*ny;
+          // separate
+          const ov=(rr*2-d)/2;a.x-=nx*ov;a.y-=ny*ov;b.x+=nx*ov;b.y+=ny*ov;
+          if(a.type!==b.type&&rel>ea()){
+            hits++;document.getElementById('simHits').textContent=hits;
+            flashes.push({x:(a.x+b.x)/2,y:(a.y+b.y)/2,t:1});
+          }
+        }
+      }
+    }
+    // draw flashes
+    flashes=flashes.filter(f=>f.t>0);
+    flashes.forEach(f=>{
+      ctx.strokeStyle=`rgba(124,242,156,${f.t})`;ctx.lineWidth=3*devicePixelRatio;
+      ctx.beginPath();ctx.arc(f.x,f.y,(1.4-f.t)*26*devicePixelRatio,0,7);ctx.stroke();
+      f.t-=0.05;
+    });
+    // draw particles
+    parts.forEach(p=>{
+      ctx.fillStyle=p.type?'#5AB7D4':'#F46036';
+      ctx.beginPath();ctx.arc(p.x,p.y,rr,0,7);ctx.fill();
+      ctx.fillStyle='rgba(255,255,255,.35)';
+      ctx.beginPath();ctx.arc(p.x-rr*.3,p.y-rr*.3,rr*.3,0,7);ctx.fill();
+    });
+    requestAnimationFrame(frame);
+  }
+  if(!reduced)frame();else{ // static render
+    parts.forEach(p=>{ctx.fillStyle=p.type?'#5AB7D4':'#F46036';ctx.beginPath();ctx.arc(p.x,p.y,R*devicePixelRatio,0,7);ctx.fill();});
+  }
+  const tEl=document.getElementById('simTemp'),cEl=document.getElementById('simConc');
+  tEl.addEventListener('input',()=>{temp=+tEl.value;document.getElementById('simTempVal').textContent=temp;});
+  cEl.addEventListener('input',()=>{count=+cEl.value;document.getElementById('simConcVal').textContent=count;spawn();});
+  const catBtn=document.getElementById('simCat');
+  catBtn.addEventListener('click',()=>{
+    cat=!cat;catBtn.classList.toggle('toggled',cat);catBtn.setAttribute('aria-pressed',cat);
+    catBtn.textContent=cat?'⚗ Catalyst: ON':'⚗ Catalyst: OFF';
+    document.getElementById('simEa').textContent=cat?'Lowered ⤵':'High';
+  });
+  document.getElementById('simReset').addEventListener('click',()=>{hits=0;document.getElementById('simHits').textContent=0;});
+  setInterval(()=>{hits=Math.round(hits*0);},10000); // rolling 10 s window
+})();
+
+
+/* == ENERGY DIAGRAM ===================== */
+(function(){
+  const svg=document.getElementById('energyDiagram');
+  const W=640,H=330;
+  const x0=70,x1=590,yR=190,yP=255,peakHi=58,peakLo=128;
+  function curve(peakY){
+    return `M ${x0} ${yR} L 190 ${yR} C 270 ${yR}, 280 ${peakY}, 330 ${peakY} C 380 ${peakY}, 390 ${yP}, 470 ${yP} L ${x1} ${yP}`;
+  }
+  svg.innerHTML=`
+    <line x1="58" y1="20" x2="58" y2="295" stroke="#93ABA1" stroke-width="1.5"/>
+    <line x1="58" y1="295" x2="610" y2="295" stroke="#93ABA1" stroke-width="1.5"/>
+    <text x="26" y="160" font-size="12" fill="#AFC6BC" transform="rotate(-90 26 160)">Energy</text>
+    <text x="330" y="318" text-anchor="middle" font-size="12" fill="#AFC6BC">Reaction coordinate</text>
+    <path id="edNoCat" d="${curve(peakHi)}" fill="none" stroke="#F46036" stroke-width="3" stroke-linecap="round"/>
+    <path id="edCat" d="${curve(peakLo)}" fill="none" stroke="#7CF29C" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round" opacity="0" style="transition:opacity .5s"/>
+    <text x="120" y="${yR-12}" font-size="13" fill="#fff">Reactants</text>
+    <text x="520" y="${yP-12}" font-size="13" fill="#fff">Products</text>
+    <line id="eaLine" x1="330" y1="${peakHi}" x2="330" y2="${yR}" stroke="#F9A03F" stroke-width="2" marker-end="" stroke-dasharray="4 4" style="transition:all .5s"/>
+    <text id="eaLab" x="342" y="${(peakHi+yR)/2}" font-size="13" fill="#F9A03F" font-weight="600">Eₐ</text>
+    <line x1="500" y1="${yR}" x2="500" y2="${yP}" stroke="#5AB7D4" stroke-width="2"/>
+    <line x1="492" y1="${yR}" x2="508" y2="${yR}" stroke="#5AB7D4" stroke-width="2"/>
+    <line x1="492" y1="${yP}" x2="508" y2="${yP}" stroke="#5AB7D4" stroke-width="2"/>
+    <text x="512" y="${(yR+yP)/2+4}" font-size="13" fill="#5AB7D4" font-weight="600">ΔH &lt; 0</text>
+    <text id="edCatLab" x="330" y="${peakLo-12}" text-anchor="middle" font-size="12.5" fill="#7CF29C" opacity="0" style="transition:opacity .5s">with catalyst</text>
+    <text x="330" y="${peakHi-12}" text-anchor="middle" font-size="12.5" fill="#F46036">without catalyst</text>`;
+  const btn=document.getElementById('energyCat');let on=false;
+  btn.addEventListener('click',()=>{
+    on=!on;btn.classList.toggle('toggled',on);btn.setAttribute('aria-pressed',on);
+    btn.textContent=on?'⚗ Remove the catalyst':'⚗ Add a catalyst';
+    svg.querySelector('#edCat').style.opacity=on?1:0;
+    svg.querySelector('#edCatLab').style.opacity=on?1:0;
+    const ea=svg.querySelector('#eaLine'),lab=svg.querySelector('#eaLab');
+    ea.setAttribute('y1',on?128:58);
+    lab.setAttribute('y',on?((128+190)/2):((58+190)/2));
+  });
+})();
+
+
+</script>
+<script src="../app.js"></script>
+</body>
+</html>
